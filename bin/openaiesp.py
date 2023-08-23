@@ -125,12 +125,14 @@ class Algo(EvoAlgo):
         # save summary statistics
         fname = self.filedir + "/S" + str(self.seed) + ".fit"
         fp = open(fname, "w")
-        fp.write('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avgfit %.2f paramsize %.2f \n' %
-             (self.seed, self.steps / float(self.maxsteps) * 100, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter))
+        fp.write('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avgfit %.2f paramsize %.2f rndenv %.2f \n' %
+             (self.seed, self.progress, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter, self.random_amount))
         fp.close()
 
         
     def evaluate(self):
+        self.policy.bins_distributions()
+
         global none_val
         seed_worker = self.seed + self.cgen * self.batchSize  # Set the seed for current generation (master and workers have the same seed)
         self.rs = np.random.RandomState(seed_worker)
@@ -270,9 +272,8 @@ class Algo(EvoAlgo):
                 self.update_normvector()              # the workers overwrite their normalization vector with the vector received from the master
 
             if self.rank == 0:
-                print('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avg %.2f weightsize %.2f' %
-                      (self.seed, self.steps / float(self.maxsteps) * 100, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter))
-
+                print('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avg %.2f weightsize %.2f rndenv %.2f' %
+                        (self.seed, self.progress, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter, self.policy.count_random/self.batchSize*2))
         if self.rank == 0:
             self.savedata()                           # save data at the end of evolution
 

@@ -39,7 +39,7 @@ public:
     // Set the seed
     void seed(int s);
     // Reset trial
-    void reset();
+    void reset(float *env);
     // Perform a step of the double-pole
     double step();
     // Close the environment

@@ -34,6 +34,7 @@ cdef extern from "dpole.h":
         int m_ninputs, m_noutputs
         double m_high, m_low
         void seed(int s)
+        void reset(float* env)
         void reset()
         double step()
         void close()
@@ -42,4 +43,4 @@ cdef extern from "dpole.h":
         void copyAct(float* action)
         void copyDone(int* done)
         void copyDobj(double* objs)
-
+        float state(int index)

@@ -26,7 +26,18 @@ class EvoAlgo(object):
         self.stat = np.arange(0, dtype=np.float64) # a vector containing progress data across generations
         self.avgfit = 0.0                    # the average fitness of the population
         self.last_save_time = time.time()    # the last time in which data have been saved
-        
+
+    @property
+    def progress(self):
+        return self.steps / float(self.maxsteps) * 100
+
+    @property
+    def random_amount(self):
+        if self.policy.curriculum > 0:
+            return self.policy.count_random/(self.batchSize*2)
+        else:
+            return 1
+
     def reset(self):
         self.bestfit = -999999999.0
         self.bestsol = None

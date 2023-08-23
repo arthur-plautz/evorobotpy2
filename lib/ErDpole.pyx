@@ -18,6 +18,8 @@ import time
 cimport numpy as np
 from libcpp cimport bool
 from ErDpole cimport Problem
+from cython.cimports.cpython import array
+import array
 
 # PyErProblem
 cdef class PyErProblem:
@@ -29,8 +31,12 @@ cdef class PyErProblem:
     def seed(self, s):
         self.cproblem.seed(s)
     
-    def reset(self):
-        self.cproblem.reset()
+    def reset(self, env=None):
+        if env is not None:
+            env_arr = cython.declare(array.array, array.array('f', env))
+            self.cproblem.reset(env_arr.data.as_floats)
+        else:
+            self.cproblem.reset()
 
     def step(self):
         return self.cproblem.step()
@@ -52,6 +58,9 @@ cdef class PyErProblem:
 
     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):
         self.cproblem.copyDobj(&dob[0])
+
+    def state(self, index):
+        return self.cproblem.m_state[index]
 
     # Attribute access
     @property

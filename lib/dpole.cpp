@@ -215,12 +215,20 @@ void Problem::copyDobj(double* objs)
     dobjects = objs;
 }
 
-void Problem::reset()
+void Problem::reset(float *env = {})
 {
     int s;
     // Initialize state
-    for (s = 0; s < NUM_STATES; s++)
-        m_state[s] = m_rng->getDouble(-stateRanges[s], stateRanges[s]);
+    if (env == 0)
+    {
+        for (s = 0; s < NUM_STATES; s++)
+            m_state[s] = m_rng->getDouble(-stateRanges[s], stateRanges[s]);
+    }
+    else
+    {
+        for (s = 0; s < NUM_STATES; s++)
+            m_state[s] = env[s];
+    }
     // Get observations
     getObs();
 }

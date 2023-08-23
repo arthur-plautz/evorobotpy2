@@ -9,8 +9,8 @@
             "/home/ventura/research/evorobotpy2/venv/lib/python3.10/site-packages/numpy/core/include/numpy/ndarrayobject.h",
             "/home/ventura/research/evorobotpy2/venv/lib/python3.10/site-packages/numpy/core/include/numpy/ndarraytypes.h",
             "/home/ventura/research/evorobotpy2/venv/lib/python3.10/site-packages/numpy/core/include/numpy/ufuncobject.h",
-            "evonet.cpp",
-            "evonet.h",
+            "predprey.cpp",
+            "predprey.h",
             "utilities.cpp"
         ],
         "include_dirs": [
@@ -25,12 +25,13 @@
         "library_dirs": [
             "/usr/local/Cellar/gsl/2.4/include"
         ],
-        "name": "net",
+        "name": "ErPredprey",
         "sources": [
-            "net.pyx"
+            "ErPredprey.pyx",
+            "robot-env.cpp"
         ]
     },
-    "module_name": "net"
+    "module_name": "ErPredprey"
 }
 END: Cython Metadata */
 
@@ -979,16 +980,16 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__net
-#define __PYX_HAVE_API__net
+#define __PYX_HAVE__ErPredprey
+#define __PYX_HAVE_API__ErPredprey
 /* Early includes */
 #include "utilities.cpp"
-#include "evonet.cpp"
+#include "predprey.cpp"
 #include "ios"
 #include "new"
 #include "stdexcept"
 #include "typeinfo"
-#include "evonet.h"
+#include "predprey.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -1243,7 +1244,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "<stringsource>",
-  "net.pyx",
+  "ErPredprey.pyx",
   "__init__.cython-30.pxd",
   "type.pxd",
 };
@@ -1484,7 +1485,7 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_3net_PyEvonet;
+struct __pyx_obj_10ErPredprey_PyErProblem;
 
 /* "../venv/lib/python3.10/site-packages/numpy/__init__.cython-30.pxd":767
  * ctypedef npy_longdouble longdouble_t
@@ -1522,16 +1523,16 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "net.pyx":23
+/* "ErPredprey.pyx":23
  * 
- * # PyEvonet
- * cdef class PyEvonet:             # <<<<<<<<<<<<<<
- *     cdef Evonet c_net
+ * # PyProblem
+ * cdef class PyErProblem:             # <<<<<<<<<<<<<<
+ *     cdef Problem cproblem
  * 
  */
-struct __pyx_obj_3net_PyEvonet {
+struct __pyx_obj_10ErPredprey_PyErProblem {
   PyObject_HEAD
-  Evonet c_net;
+  Problem cproblem;
 };
 
 /* #### Code section: utility_code_proto ### */
@@ -2364,19 +2365,20 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 #if !CYTHON_USE_MODULE_STATE
 #endif
 
-/* Module declarations from "net" */
+/* Module declarations from "ErPredprey" */
 #if !CYTHON_USE_MODULE_STATE
-static PyTypeObject *__pyx_ptype_3net_PyEvonet = 0;
+static PyTypeObject *__pyx_ptype_10ErPredprey_PyErProblem = 0;
 #endif
 /* #### Code section: typeinfo ### */
-static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, IS_UNSIGNED(int) ? 'U' : 'I', IS_UNSIGNED(int), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "net"
-extern int __pyx_module_is_main_net;
-int __pyx_module_is_main_net = 0;
+#define __Pyx_MODULE_NAME "ErPredprey"
+extern int __pyx_module_is_main_ErPredprey;
+int __pyx_module_is_main_ErPredprey = 0;
 
-/* Implementation of "net" */
+/* Implementation of "ErPredprey" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_ImportError;
@@ -2384,246 +2386,177 @@ static PyObject *__pyx_builtin_ImportError;
 static const char __pyx_k_s[] = "s";
 static const char __pyx_k__3[] = "*";
 static const char __pyx_k_gc[] = "gc";
-static const char __pyx_k_na[] = "na";
-static const char __pyx_k_no[] = "no";
 static const char __pyx_k_np[] = "np";
-static const char __pyx_k__30[] = "?";
-static const char __pyx_k_inp[] = "inp";
-static const char __pyx_k_low[] = "low";
-static const char __pyx_k_net[] = "net";
-static const char __pyx_k_bias[] = "bias";
-static const char __pyx_k_clip[] = "clip";
-static const char __pyx_k_geno[] = "geno";
-static const char __pyx_k_high[] = "high";
+static const char __pyx_k__23[] = "?";
+static const char __pyx_k_act[] = "act";
+static const char __pyx_k_dob[] = "dob";
+static const char __pyx_k_obs[] = "obs";
+static const char __pyx_k_done[] = "done";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
-static const char __pyx_k_outp[] = "outp";
 static const char __pyx_k_seed[] = "seed";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_spec[] = "__spec__";
+static const char __pyx_k_step[] = "step";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
-static const char __pyx_k_nbins[] = "nbins";
+static const char __pyx_k_close[] = "close";
 static const char __pyx_k_numpy[] = "numpy";
-static const char __pyx_k_phase[] = "phase";
-static const char __pyx_k_wInit[] = "wInit";
+static const char __pyx_k_reset[] = "reset";
 static const char __pyx_k_enable[] = "enable";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_isDone[] = "isDone";
 static const char __pyx_k_reduce[] = "__reduce__";
-static const char __pyx_k_wrange[] = "wrange";
+static const char __pyx_k_render[] = "render";
+static const char __pyx_k_copyAct[] = "copyAct";
+static const char __pyx_k_copyObs[] = "copyObs";
 static const char __pyx_k_disable[] = "disable";
-static const char __pyx_k_netType[] = "netType";
-static const char __pyx_k_net_pyx[] = "net.pyx";
-static const char __pyx_k_ninputs[] = "ninputs";
-static const char __pyx_k_nlayers[] = "nlayers";
-static const char __pyx_k_outType[] = "outType";
-static const char __pyx_k_randAct[] = "randAct";
-static const char __pyx_k_PyEvonet[] = "PyEvonet";
-static const char __pyx_k_actFunct[] = "actFunct";
+static const char __pyx_k_copyDobj[] = "copyDobj";
+static const char __pyx_k_copyDone[] = "copyDone";
 static const char __pyx_k_getstate[] = "__getstate__";
-static const char __pyx_k_nhiddens[] = "nhiddens";
-static const char __pyx_k_noutputs[] = "noutputs";
-static const char __pyx_k_randActR[] = "randActR";
-static const char __pyx_k_resetNet[] = "resetNet";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
-static const char __pyx_k_copyInput[] = "copyInput";
 static const char __pyx_k_isenabled[] = "isenabled";
-static const char __pyx_k_nhiddens2[] = "nhiddens2";
-static const char __pyx_k_nnetworks[] = "nnetworks";
-static const char __pyx_k_normalize[] = "normalize";
-static const char __pyx_k_normphase[] = "normphase";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
-static const char __pyx_k_updateNet[] = "updateNet";
-static const char __pyx_k_copyOutput[] = "copyOutput";
+static const char __pyx_k_ErPredprey[] = "ErPredprey";
 static const char __pyx_k_ImportError[] = "ImportError";
-static const char __pyx_k_initWeights[] = "initWeights";
-static const char __pyx_k_copyGenotype[] = "copyGenotype";
+static const char __pyx_k_PyErProblem[] = "PyErProblem";
 static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_stringsource[] = "<stringsource>";
-static const char __pyx_k_PyEvonet_seed[] = "PyEvonet.seed";
-static const char __pyx_k_copyNeuronact[] = "copyNeuronact";
-static const char __pyx_k_heterogeneous[] = "heterogeneous";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
+static const char __pyx_k_ErPredprey_pyx[] = "ErPredprey.pyx";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_PyEvonet_resetNet[] = "PyEvonet.resetNet";
-static const char __pyx_k_computeParameters[] = "computeParameters";
-static const char __pyx_k_copyNormalization[] = "copyNormalization";
-static const char __pyx_k_PyEvonet_copyInput[] = "PyEvonet.copyInput";
-static const char __pyx_k_PyEvonet_normphase[] = "PyEvonet.normphase";
-static const char __pyx_k_PyEvonet_updateNet[] = "PyEvonet.updateNet";
+static const char __pyx_k_PyErProblem_seed[] = "PyErProblem.seed";
+static const char __pyx_k_PyErProblem_step[] = "PyErProblem.step";
+static const char __pyx_k_PyErProblem_close[] = "PyErProblem.close";
+static const char __pyx_k_PyErProblem_reset[] = "PyErProblem.reset";
+static const char __pyx_k_PyErProblem_isDone[] = "PyErProblem.isDone";
+static const char __pyx_k_PyErProblem_render[] = "PyErProblem.render";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_PyEvonet_copyOutput[] = "PyEvonet.copyOutput";
-static const char __pyx_k_PyEvonet_initWeights[] = "PyEvonet.initWeights";
-static const char __pyx_k_PyEvonet_copyGenotype[] = "PyEvonet.copyGenotype";
-static const char __pyx_k_PyEvonet_copyNeuronact[] = "PyEvonet.copyNeuronact";
-static const char __pyx_k_getNormalizationVectors[] = "getNormalizationVectors";
-static const char __pyx_k_setNormalizationVectors[] = "setNormalizationVectors";
-static const char __pyx_k_PyEvonet___reduce_cython[] = "PyEvonet.__reduce_cython__";
-static const char __pyx_k_resetNormalizationVectors[] = "resetNormalizationVectors";
-static const char __pyx_k_PyEvonet___setstate_cython[] = "PyEvonet.__setstate_cython__";
-static const char __pyx_k_PyEvonet_computeParameters[] = "PyEvonet.computeParameters";
-static const char __pyx_k_PyEvonet_copyNormalization[] = "PyEvonet.copyNormalization";
-static const char __pyx_k_updateNormalizationVectors[] = "updateNormalizationVectors";
-static const char __pyx_k_This_file_belong_to_https_githu[] = "\nThis file belong to https://github.com/snolfi/evorobotpy\nAuthor: Stefano Nolfi, stefano.nolfi@istc.cnr.it\n\nnet.pyx, python wrapper for evonet.cpp\n\nThis file is part of the python module net.so that include the following files:\nevonet.cpp, evonet.h, utilities.cpp, utilities.h, net.pxd, net.pyx and setupevonet.py\nAnd can be compile with cython with the commands: cd ./evorobotpy/lib; python3 setupevonet.py build_ext \342\200\223inplace; cp net*.so ../bin\n";
+static const char __pyx_k_PyErProblem_copyAct[] = "PyErProblem.copyAct";
+static const char __pyx_k_PyErProblem_copyObs[] = "PyErProblem.copyObs";
+static const char __pyx_k_PyErProblem_copyDobj[] = "PyErProblem.copyDobj";
+static const char __pyx_k_PyErProblem_copyDone[] = "PyErProblem.copyDone";
+static const char __pyx_k_PyErProblem___reduce_cython[] = "PyErProblem.__reduce_cython__";
+static const char __pyx_k_PyErProblem___setstate_cython[] = "PyErProblem.__setstate_cython__";
+static const char __pyx_k_This_file_belong_to_https_githu[] = "\nThis file belong to https://github.com/snolfi/evorobotpy\nAuthor: Stefano Nolfi, stefano.nolfi@istc.cnr.it\n\nErPredprey.pyx, python wrapper for predprey.cpp\n\nThis file is part of the python module ErPredprey.so that include the following files:\npredprey.cpp, predprey.h, robot-env.cpp, robot-env.h, utilities.cpp, utilities.h, ErPredprey.pxd, ErPredprey.pyx and setupErPredprey.py\nAnd can be compiled with cython and installed with the commands: cd ./evorobotpy/lib; python3 setupErPredprey.py build_ext \342\200\223inplace; cp ErPredprey*.so ../bin\n";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
-static const char __pyx_k_PyEvonet_getNormalizationVectors[] = "PyEvonet.getNormalizationVectors";
-static const char __pyx_k_PyEvonet_resetNormalizationVecto[] = "PyEvonet.resetNormalizationVectors";
-static const char __pyx_k_PyEvonet_setNormalizationVectors[] = "PyEvonet.setNormalizationVectors";
-static const char __pyx_k_PyEvonet_updateNormalizationVect[] = "PyEvonet.updateNormalizationVectors";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 #if !CYTHON_USE_MODULE_STATE
+static PyObject *__pyx_n_s_ErPredprey;
+static PyObject *__pyx_kp_s_ErPredprey_pyx;
 static PyObject *__pyx_n_s_ImportError;
-static PyObject *__pyx_n_s_PyEvonet;
-static PyObject *__pyx_n_s_PyEvonet___reduce_cython;
-static PyObject *__pyx_n_s_PyEvonet___setstate_cython;
-static PyObject *__pyx_n_s_PyEvonet_computeParameters;
-static PyObject *__pyx_n_s_PyEvonet_copyGenotype;
-static PyObject *__pyx_n_s_PyEvonet_copyInput;
-static PyObject *__pyx_n_s_PyEvonet_copyNeuronact;
-static PyObject *__pyx_n_s_PyEvonet_copyNormalization;
-static PyObject *__pyx_n_s_PyEvonet_copyOutput;
-static PyObject *__pyx_n_s_PyEvonet_getNormalizationVectors;
-static PyObject *__pyx_n_s_PyEvonet_initWeights;
-static PyObject *__pyx_n_s_PyEvonet_normphase;
-static PyObject *__pyx_n_s_PyEvonet_resetNet;
-static PyObject *__pyx_n_s_PyEvonet_resetNormalizationVecto;
-static PyObject *__pyx_n_s_PyEvonet_seed;
-static PyObject *__pyx_n_s_PyEvonet_setNormalizationVectors;
-static PyObject *__pyx_n_s_PyEvonet_updateNet;
-static PyObject *__pyx_n_s_PyEvonet_updateNormalizationVect;
+static PyObject *__pyx_n_s_PyErProblem;
+static PyObject *__pyx_n_s_PyErProblem___reduce_cython;
+static PyObject *__pyx_n_s_PyErProblem___setstate_cython;
+static PyObject *__pyx_n_s_PyErProblem_close;
+static PyObject *__pyx_n_s_PyErProblem_copyAct;
+static PyObject *__pyx_n_s_PyErProblem_copyDobj;
+static PyObject *__pyx_n_s_PyErProblem_copyDone;
+static PyObject *__pyx_n_s_PyErProblem_copyObs;
+static PyObject *__pyx_n_s_PyErProblem_isDone;
+static PyObject *__pyx_n_s_PyErProblem_render;
+static PyObject *__pyx_n_s_PyErProblem_reset;
+static PyObject *__pyx_n_s_PyErProblem_seed;
+static PyObject *__pyx_n_s_PyErProblem_step;
 static PyObject *__pyx_n_s_TypeError;
+static PyObject *__pyx_n_s__23;
 static PyObject *__pyx_n_s__3;
-static PyObject *__pyx_n_s__30;
-static PyObject *__pyx_n_s_actFunct;
+static PyObject *__pyx_n_s_act;
 static PyObject *__pyx_n_s_asyncio_coroutines;
-static PyObject *__pyx_n_s_bias;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_clip;
-static PyObject *__pyx_n_s_computeParameters;
-static PyObject *__pyx_n_s_copyGenotype;
-static PyObject *__pyx_n_s_copyInput;
-static PyObject *__pyx_n_s_copyNeuronact;
-static PyObject *__pyx_n_s_copyNormalization;
-static PyObject *__pyx_n_s_copyOutput;
+static PyObject *__pyx_n_s_close;
+static PyObject *__pyx_n_s_copyAct;
+static PyObject *__pyx_n_s_copyDobj;
+static PyObject *__pyx_n_s_copyDone;
+static PyObject *__pyx_n_s_copyObs;
 static PyObject *__pyx_kp_u_disable;
+static PyObject *__pyx_n_s_dob;
+static PyObject *__pyx_n_s_done;
 static PyObject *__pyx_kp_u_enable;
 static PyObject *__pyx_kp_u_gc;
-static PyObject *__pyx_n_s_geno;
-static PyObject *__pyx_n_s_getNormalizationVectors;
 static PyObject *__pyx_n_s_getstate;
-static PyObject *__pyx_n_s_heterogeneous;
-static PyObject *__pyx_n_s_high;
 static PyObject *__pyx_n_s_import;
-static PyObject *__pyx_n_s_initWeights;
 static PyObject *__pyx_n_s_initializing;
-static PyObject *__pyx_n_s_inp;
+static PyObject *__pyx_n_s_isDone;
 static PyObject *__pyx_n_s_is_coroutine;
 static PyObject *__pyx_kp_u_isenabled;
-static PyObject *__pyx_n_s_low;
 static PyObject *__pyx_n_s_main;
-static PyObject *__pyx_n_s_na;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_nbins;
-static PyObject *__pyx_n_s_net;
-static PyObject *__pyx_n_s_netType;
-static PyObject *__pyx_kp_s_net_pyx;
-static PyObject *__pyx_n_s_nhiddens;
-static PyObject *__pyx_n_s_nhiddens2;
-static PyObject *__pyx_n_s_ninputs;
-static PyObject *__pyx_n_s_nlayers;
-static PyObject *__pyx_n_s_nnetworks;
-static PyObject *__pyx_n_s_no;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
-static PyObject *__pyx_n_s_normalize;
-static PyObject *__pyx_n_s_normphase;
-static PyObject *__pyx_n_s_noutputs;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
 static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
-static PyObject *__pyx_n_s_outType;
-static PyObject *__pyx_n_s_outp;
-static PyObject *__pyx_n_s_phase;
+static PyObject *__pyx_n_s_obs;
 static PyObject *__pyx_n_s_pyx_state;
-static PyObject *__pyx_n_s_randAct;
-static PyObject *__pyx_n_s_randActR;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
-static PyObject *__pyx_n_s_resetNet;
-static PyObject *__pyx_n_s_resetNormalizationVectors;
+static PyObject *__pyx_n_s_render;
+static PyObject *__pyx_n_s_reset;
 static PyObject *__pyx_n_s_s;
 static PyObject *__pyx_n_s_seed;
 static PyObject *__pyx_n_s_self;
-static PyObject *__pyx_n_s_setNormalizationVectors;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_spec;
+static PyObject *__pyx_n_s_step;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
-static PyObject *__pyx_n_s_updateNet;
-static PyObject *__pyx_n_s_updateNormalizationVectors;
-static PyObject *__pyx_n_s_wInit;
-static PyObject *__pyx_n_s_wrange;
 #endif
 /* #### Code section: decls ### */
-static int __pyx_pf_3net_8PyEvonet___cinit__(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static int __pyx_pf_3net_8PyEvonet_2__cinit__(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_nnetworks, int __pyx_v_heterogeneous, int __pyx_v_ninputs, int __pyx_v_nhiddens, int __pyx_v_noutputs, int __pyx_v_nlayers, int __pyx_v_nhiddens2, int __pyx_v_bias, int __pyx_v_netType, int __pyx_v_actFunct, int __pyx_v_outType, int __pyx_v_wInit, int __pyx_v_clip, int __pyx_v_normalize, int __pyx_v_randAct, double __pyx_v_randActR, double __pyx_v_wrange, int __pyx_v_nbins, double __pyx_v_low, double __pyx_v_high); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_4seed(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_s); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_6resetNet(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_8copyGenotype(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_geno); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_10copyInput(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_inp); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_12copyOutput(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_outp); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_14copyNeuronact(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_na); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_16copyNormalization(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_no); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_18updateNet(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_20computeParameters(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_22initWeights(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_24normphase(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_phase); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_26updateNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_28setNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_30getNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_32resetNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3net_PyEvonet *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3net_8PyEvonet_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3net_PyEvonet *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_3net_PyEvonet(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_10ErPredprey_11PyErProblem___cinit__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_2seed(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, int __pyx_v_s); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_4reset(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_6step(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_8close(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_10render(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_12copyObs(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_obs); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_14copyAct(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_act); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_16copyDone(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_done); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_18copyDobj(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_dob); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_20isDone(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_7ninputs___get__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static int __pyx_pf_10ErPredprey_11PyErProblem_7ninputs_2__set__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyObject *__pyx_v_ninputs); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_8noutputs___get__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static int __pyx_pf_10ErPredprey_11PyErProblem_8noutputs_2__set__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyObject *__pyx_v_noutputs); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_4high___get__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_3low___get__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_22__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_24__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_10ErPredprey_PyErProblem(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 #if !CYTHON_USE_MODULE_STATE
+static PyObject *__pyx_float_1_0;
+static PyObject *__pyx_float_neg_1_0;
 #endif
 #if !CYTHON_USE_MODULE_STATE
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__6;
-static PyObject *__pyx_tuple__8;
-static PyObject *__pyx_tuple__10;
-static PyObject *__pyx_tuple__12;
-static PyObject *__pyx_tuple__14;
-static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_tuple__17;
 static PyObject *__pyx_tuple__21;
-static PyObject *__pyx_tuple__28;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__7;
+static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__9;
-static PyObject *__pyx_codeobj__11;
-static PyObject *__pyx_codeobj__13;
-static PyObject *__pyx_codeobj__15;
-static PyObject *__pyx_codeobj__17;
+static PyObject *__pyx_codeobj__10;
+static PyObject *__pyx_codeobj__12;
+static PyObject *__pyx_codeobj__14;
+static PyObject *__pyx_codeobj__16;
 static PyObject *__pyx_codeobj__18;
 static PyObject *__pyx_codeobj__19;
 static PyObject *__pyx_codeobj__20;
 static PyObject *__pyx_codeobj__22;
-static PyObject *__pyx_codeobj__23;
-static PyObject *__pyx_codeobj__24;
-static PyObject *__pyx_codeobj__25;
-static PyObject *__pyx_codeobj__26;
-static PyObject *__pyx_codeobj__27;
-static PyObject *__pyx_codeobj__29;
 #endif
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2657,130 +2590,93 @@ typedef struct {
   PyTypeObject *__pyx_ptype_5numpy_flexible;
   PyTypeObject *__pyx_ptype_5numpy_character;
   PyTypeObject *__pyx_ptype_5numpy_ufunc;
-  PyTypeObject *__pyx_ptype_3net_PyEvonet;
-  PyObject *__pyx_type_3net_PyEvonet;
+  PyTypeObject *__pyx_ptype_10ErPredprey_PyErProblem;
+  PyObject *__pyx_type_10ErPredprey_PyErProblem;
+  PyObject *__pyx_n_s_ErPredprey;
+  PyObject *__pyx_kp_s_ErPredprey_pyx;
   PyObject *__pyx_n_s_ImportError;
-  PyObject *__pyx_n_s_PyEvonet;
-  PyObject *__pyx_n_s_PyEvonet___reduce_cython;
-  PyObject *__pyx_n_s_PyEvonet___setstate_cython;
-  PyObject *__pyx_n_s_PyEvonet_computeParameters;
-  PyObject *__pyx_n_s_PyEvonet_copyGenotype;
-  PyObject *__pyx_n_s_PyEvonet_copyInput;
-  PyObject *__pyx_n_s_PyEvonet_copyNeuronact;
-  PyObject *__pyx_n_s_PyEvonet_copyNormalization;
-  PyObject *__pyx_n_s_PyEvonet_copyOutput;
-  PyObject *__pyx_n_s_PyEvonet_getNormalizationVectors;
-  PyObject *__pyx_n_s_PyEvonet_initWeights;
-  PyObject *__pyx_n_s_PyEvonet_normphase;
-  PyObject *__pyx_n_s_PyEvonet_resetNet;
-  PyObject *__pyx_n_s_PyEvonet_resetNormalizationVecto;
-  PyObject *__pyx_n_s_PyEvonet_seed;
-  PyObject *__pyx_n_s_PyEvonet_setNormalizationVectors;
-  PyObject *__pyx_n_s_PyEvonet_updateNet;
-  PyObject *__pyx_n_s_PyEvonet_updateNormalizationVect;
+  PyObject *__pyx_n_s_PyErProblem;
+  PyObject *__pyx_n_s_PyErProblem___reduce_cython;
+  PyObject *__pyx_n_s_PyErProblem___setstate_cython;
+  PyObject *__pyx_n_s_PyErProblem_close;
+  PyObject *__pyx_n_s_PyErProblem_copyAct;
+  PyObject *__pyx_n_s_PyErProblem_copyDobj;
+  PyObject *__pyx_n_s_PyErProblem_copyDone;
+  PyObject *__pyx_n_s_PyErProblem_copyObs;
+  PyObject *__pyx_n_s_PyErProblem_isDone;
+  PyObject *__pyx_n_s_PyErProblem_render;
+  PyObject *__pyx_n_s_PyErProblem_reset;
+  PyObject *__pyx_n_s_PyErProblem_seed;
+  PyObject *__pyx_n_s_PyErProblem_step;
   PyObject *__pyx_n_s_TypeError;
+  PyObject *__pyx_n_s__23;
   PyObject *__pyx_n_s__3;
-  PyObject *__pyx_n_s__30;
-  PyObject *__pyx_n_s_actFunct;
+  PyObject *__pyx_n_s_act;
   PyObject *__pyx_n_s_asyncio_coroutines;
-  PyObject *__pyx_n_s_bias;
   PyObject *__pyx_n_s_cline_in_traceback;
-  PyObject *__pyx_n_s_clip;
-  PyObject *__pyx_n_s_computeParameters;
-  PyObject *__pyx_n_s_copyGenotype;
-  PyObject *__pyx_n_s_copyInput;
-  PyObject *__pyx_n_s_copyNeuronact;
-  PyObject *__pyx_n_s_copyNormalization;
-  PyObject *__pyx_n_s_copyOutput;
+  PyObject *__pyx_n_s_close;
+  PyObject *__pyx_n_s_copyAct;
+  PyObject *__pyx_n_s_copyDobj;
+  PyObject *__pyx_n_s_copyDone;
+  PyObject *__pyx_n_s_copyObs;
   PyObject *__pyx_kp_u_disable;
+  PyObject *__pyx_n_s_dob;
+  PyObject *__pyx_n_s_done;
   PyObject *__pyx_kp_u_enable;
   PyObject *__pyx_kp_u_gc;
-  PyObject *__pyx_n_s_geno;
-  PyObject *__pyx_n_s_getNormalizationVectors;
   PyObject *__pyx_n_s_getstate;
-  PyObject *__pyx_n_s_heterogeneous;
-  PyObject *__pyx_n_s_high;
   PyObject *__pyx_n_s_import;
-  PyObject *__pyx_n_s_initWeights;
   PyObject *__pyx_n_s_initializing;
-  PyObject *__pyx_n_s_inp;
+  PyObject *__pyx_n_s_isDone;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_kp_u_isenabled;
-  PyObject *__pyx_n_s_low;
   PyObject *__pyx_n_s_main;
-  PyObject *__pyx_n_s_na;
   PyObject *__pyx_n_s_name;
-  PyObject *__pyx_n_s_nbins;
-  PyObject *__pyx_n_s_net;
-  PyObject *__pyx_n_s_netType;
-  PyObject *__pyx_kp_s_net_pyx;
-  PyObject *__pyx_n_s_nhiddens;
-  PyObject *__pyx_n_s_nhiddens2;
-  PyObject *__pyx_n_s_ninputs;
-  PyObject *__pyx_n_s_nlayers;
-  PyObject *__pyx_n_s_nnetworks;
-  PyObject *__pyx_n_s_no;
   PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
-  PyObject *__pyx_n_s_normalize;
-  PyObject *__pyx_n_s_normphase;
-  PyObject *__pyx_n_s_noutputs;
   PyObject *__pyx_n_s_np;
   PyObject *__pyx_n_s_numpy;
   PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
   PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
-  PyObject *__pyx_n_s_outType;
-  PyObject *__pyx_n_s_outp;
-  PyObject *__pyx_n_s_phase;
+  PyObject *__pyx_n_s_obs;
   PyObject *__pyx_n_s_pyx_state;
-  PyObject *__pyx_n_s_randAct;
-  PyObject *__pyx_n_s_randActR;
   PyObject *__pyx_n_s_reduce;
   PyObject *__pyx_n_s_reduce_cython;
   PyObject *__pyx_n_s_reduce_ex;
-  PyObject *__pyx_n_s_resetNet;
-  PyObject *__pyx_n_s_resetNormalizationVectors;
+  PyObject *__pyx_n_s_render;
+  PyObject *__pyx_n_s_reset;
   PyObject *__pyx_n_s_s;
   PyObject *__pyx_n_s_seed;
   PyObject *__pyx_n_s_self;
-  PyObject *__pyx_n_s_setNormalizationVectors;
   PyObject *__pyx_n_s_setstate;
   PyObject *__pyx_n_s_setstate_cython;
   PyObject *__pyx_n_s_spec;
+  PyObject *__pyx_n_s_step;
   PyObject *__pyx_kp_s_stringsource;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_time;
-  PyObject *__pyx_n_s_updateNet;
-  PyObject *__pyx_n_s_updateNormalizationVectors;
-  PyObject *__pyx_n_s_wInit;
-  PyObject *__pyx_n_s_wrange;
+  PyObject *__pyx_float_1_0;
+  PyObject *__pyx_float_neg_1_0;
   PyObject *__pyx_tuple_;
   PyObject *__pyx_tuple__2;
   PyObject *__pyx_tuple__4;
   PyObject *__pyx_tuple__6;
-  PyObject *__pyx_tuple__8;
-  PyObject *__pyx_tuple__10;
-  PyObject *__pyx_tuple__12;
-  PyObject *__pyx_tuple__14;
-  PyObject *__pyx_tuple__16;
+  PyObject *__pyx_tuple__11;
+  PyObject *__pyx_tuple__13;
+  PyObject *__pyx_tuple__15;
+  PyObject *__pyx_tuple__17;
   PyObject *__pyx_tuple__21;
-  PyObject *__pyx_tuple__28;
   PyObject *__pyx_codeobj__5;
   PyObject *__pyx_codeobj__7;
+  PyObject *__pyx_codeobj__8;
   PyObject *__pyx_codeobj__9;
-  PyObject *__pyx_codeobj__11;
-  PyObject *__pyx_codeobj__13;
-  PyObject *__pyx_codeobj__15;
-  PyObject *__pyx_codeobj__17;
+  PyObject *__pyx_codeobj__10;
+  PyObject *__pyx_codeobj__12;
+  PyObject *__pyx_codeobj__14;
+  PyObject *__pyx_codeobj__16;
   PyObject *__pyx_codeobj__18;
   PyObject *__pyx_codeobj__19;
   PyObject *__pyx_codeobj__20;
   PyObject *__pyx_codeobj__22;
-  PyObject *__pyx_codeobj__23;
-  PyObject *__pyx_codeobj__24;
-  PyObject *__pyx_codeobj__25;
-  PyObject *__pyx_codeobj__26;
-  PyObject *__pyx_codeobj__27;
-  PyObject *__pyx_codeobj__29;
 } __pyx_mstate;
 
 #ifdef __cplusplus
@@ -2830,130 +2726,93 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_flexible);
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_character);
   Py_CLEAR(clear_module_state->__pyx_ptype_5numpy_ufunc);
-  Py_CLEAR(clear_module_state->__pyx_ptype_3net_PyEvonet);
-  Py_CLEAR(clear_module_state->__pyx_type_3net_PyEvonet);
+  Py_CLEAR(clear_module_state->__pyx_ptype_10ErPredprey_PyErProblem);
+  Py_CLEAR(clear_module_state->__pyx_type_10ErPredprey_PyErProblem);
+  Py_CLEAR(clear_module_state->__pyx_n_s_ErPredprey);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_ErPredprey_pyx);
   Py_CLEAR(clear_module_state->__pyx_n_s_ImportError);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet___reduce_cython);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet___setstate_cython);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_computeParameters);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_copyGenotype);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_copyInput);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_copyNeuronact);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_copyNormalization);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_copyOutput);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_getNormalizationVectors);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_initWeights);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_normphase);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_resetNet);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_resetNormalizationVecto);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_seed);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_setNormalizationVectors);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_updateNet);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PyEvonet_updateNormalizationVect);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem___reduce_cython);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem___setstate_cython);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_close);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_copyAct);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_copyDobj);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_copyDone);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_copyObs);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_isDone);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_render);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_reset);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_seed);
+  Py_CLEAR(clear_module_state->__pyx_n_s_PyErProblem_step);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
+  Py_CLEAR(clear_module_state->__pyx_n_s__23);
   Py_CLEAR(clear_module_state->__pyx_n_s__3);
-  Py_CLEAR(clear_module_state->__pyx_n_s__30);
-  Py_CLEAR(clear_module_state->__pyx_n_s_actFunct);
+  Py_CLEAR(clear_module_state->__pyx_n_s_act);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
-  Py_CLEAR(clear_module_state->__pyx_n_s_bias);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
-  Py_CLEAR(clear_module_state->__pyx_n_s_clip);
-  Py_CLEAR(clear_module_state->__pyx_n_s_computeParameters);
-  Py_CLEAR(clear_module_state->__pyx_n_s_copyGenotype);
-  Py_CLEAR(clear_module_state->__pyx_n_s_copyInput);
-  Py_CLEAR(clear_module_state->__pyx_n_s_copyNeuronact);
-  Py_CLEAR(clear_module_state->__pyx_n_s_copyNormalization);
-  Py_CLEAR(clear_module_state->__pyx_n_s_copyOutput);
+  Py_CLEAR(clear_module_state->__pyx_n_s_close);
+  Py_CLEAR(clear_module_state->__pyx_n_s_copyAct);
+  Py_CLEAR(clear_module_state->__pyx_n_s_copyDobj);
+  Py_CLEAR(clear_module_state->__pyx_n_s_copyDone);
+  Py_CLEAR(clear_module_state->__pyx_n_s_copyObs);
   Py_CLEAR(clear_module_state->__pyx_kp_u_disable);
+  Py_CLEAR(clear_module_state->__pyx_n_s_dob);
+  Py_CLEAR(clear_module_state->__pyx_n_s_done);
   Py_CLEAR(clear_module_state->__pyx_kp_u_enable);
   Py_CLEAR(clear_module_state->__pyx_kp_u_gc);
-  Py_CLEAR(clear_module_state->__pyx_n_s_geno);
-  Py_CLEAR(clear_module_state->__pyx_n_s_getNormalizationVectors);
   Py_CLEAR(clear_module_state->__pyx_n_s_getstate);
-  Py_CLEAR(clear_module_state->__pyx_n_s_heterogeneous);
-  Py_CLEAR(clear_module_state->__pyx_n_s_high);
   Py_CLEAR(clear_module_state->__pyx_n_s_import);
-  Py_CLEAR(clear_module_state->__pyx_n_s_initWeights);
   Py_CLEAR(clear_module_state->__pyx_n_s_initializing);
-  Py_CLEAR(clear_module_state->__pyx_n_s_inp);
+  Py_CLEAR(clear_module_state->__pyx_n_s_isDone);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_kp_u_isenabled);
-  Py_CLEAR(clear_module_state->__pyx_n_s_low);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
-  Py_CLEAR(clear_module_state->__pyx_n_s_na);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
-  Py_CLEAR(clear_module_state->__pyx_n_s_nbins);
-  Py_CLEAR(clear_module_state->__pyx_n_s_net);
-  Py_CLEAR(clear_module_state->__pyx_n_s_netType);
-  Py_CLEAR(clear_module_state->__pyx_kp_s_net_pyx);
-  Py_CLEAR(clear_module_state->__pyx_n_s_nhiddens);
-  Py_CLEAR(clear_module_state->__pyx_n_s_nhiddens2);
-  Py_CLEAR(clear_module_state->__pyx_n_s_ninputs);
-  Py_CLEAR(clear_module_state->__pyx_n_s_nlayers);
-  Py_CLEAR(clear_module_state->__pyx_n_s_nnetworks);
-  Py_CLEAR(clear_module_state->__pyx_n_s_no);
   Py_CLEAR(clear_module_state->__pyx_kp_s_no_default___reduce___due_to_non);
-  Py_CLEAR(clear_module_state->__pyx_n_s_normalize);
-  Py_CLEAR(clear_module_state->__pyx_n_s_normphase);
-  Py_CLEAR(clear_module_state->__pyx_n_s_noutputs);
   Py_CLEAR(clear_module_state->__pyx_n_s_np);
   Py_CLEAR(clear_module_state->__pyx_n_s_numpy);
   Py_CLEAR(clear_module_state->__pyx_kp_s_numpy_core_multiarray_failed_to);
   Py_CLEAR(clear_module_state->__pyx_kp_s_numpy_core_umath_failed_to_impor);
-  Py_CLEAR(clear_module_state->__pyx_n_s_outType);
-  Py_CLEAR(clear_module_state->__pyx_n_s_outp);
-  Py_CLEAR(clear_module_state->__pyx_n_s_phase);
+  Py_CLEAR(clear_module_state->__pyx_n_s_obs);
   Py_CLEAR(clear_module_state->__pyx_n_s_pyx_state);
-  Py_CLEAR(clear_module_state->__pyx_n_s_randAct);
-  Py_CLEAR(clear_module_state->__pyx_n_s_randActR);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_ex);
-  Py_CLEAR(clear_module_state->__pyx_n_s_resetNet);
-  Py_CLEAR(clear_module_state->__pyx_n_s_resetNormalizationVectors);
+  Py_CLEAR(clear_module_state->__pyx_n_s_render);
+  Py_CLEAR(clear_module_state->__pyx_n_s_reset);
   Py_CLEAR(clear_module_state->__pyx_n_s_s);
   Py_CLEAR(clear_module_state->__pyx_n_s_seed);
   Py_CLEAR(clear_module_state->__pyx_n_s_self);
-  Py_CLEAR(clear_module_state->__pyx_n_s_setNormalizationVectors);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_spec);
+  Py_CLEAR(clear_module_state->__pyx_n_s_step);
   Py_CLEAR(clear_module_state->__pyx_kp_s_stringsource);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_time);
-  Py_CLEAR(clear_module_state->__pyx_n_s_updateNet);
-  Py_CLEAR(clear_module_state->__pyx_n_s_updateNormalizationVectors);
-  Py_CLEAR(clear_module_state->__pyx_n_s_wInit);
-  Py_CLEAR(clear_module_state->__pyx_n_s_wrange);
+  Py_CLEAR(clear_module_state->__pyx_float_1_0);
+  Py_CLEAR(clear_module_state->__pyx_float_neg_1_0);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__2);
   Py_CLEAR(clear_module_state->__pyx_tuple__4);
   Py_CLEAR(clear_module_state->__pyx_tuple__6);
-  Py_CLEAR(clear_module_state->__pyx_tuple__8);
-  Py_CLEAR(clear_module_state->__pyx_tuple__10);
-  Py_CLEAR(clear_module_state->__pyx_tuple__12);
-  Py_CLEAR(clear_module_state->__pyx_tuple__14);
-  Py_CLEAR(clear_module_state->__pyx_tuple__16);
+  Py_CLEAR(clear_module_state->__pyx_tuple__11);
+  Py_CLEAR(clear_module_state->__pyx_tuple__13);
+  Py_CLEAR(clear_module_state->__pyx_tuple__15);
+  Py_CLEAR(clear_module_state->__pyx_tuple__17);
   Py_CLEAR(clear_module_state->__pyx_tuple__21);
-  Py_CLEAR(clear_module_state->__pyx_tuple__28);
   Py_CLEAR(clear_module_state->__pyx_codeobj__5);
   Py_CLEAR(clear_module_state->__pyx_codeobj__7);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__8);
   Py_CLEAR(clear_module_state->__pyx_codeobj__9);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__11);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__13);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__15);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__17);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__10);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__12);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__14);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__16);
   Py_CLEAR(clear_module_state->__pyx_codeobj__18);
   Py_CLEAR(clear_module_state->__pyx_codeobj__19);
   Py_CLEAR(clear_module_state->__pyx_codeobj__20);
   Py_CLEAR(clear_module_state->__pyx_codeobj__22);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__23);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__24);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__25);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__26);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__27);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__29);
   return 0;
 }
 #endif
@@ -2990,130 +2849,93 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_flexible);
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_character);
   Py_VISIT(traverse_module_state->__pyx_ptype_5numpy_ufunc);
-  Py_VISIT(traverse_module_state->__pyx_ptype_3net_PyEvonet);
-  Py_VISIT(traverse_module_state->__pyx_type_3net_PyEvonet);
+  Py_VISIT(traverse_module_state->__pyx_ptype_10ErPredprey_PyErProblem);
+  Py_VISIT(traverse_module_state->__pyx_type_10ErPredprey_PyErProblem);
+  Py_VISIT(traverse_module_state->__pyx_n_s_ErPredprey);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_ErPredprey_pyx);
   Py_VISIT(traverse_module_state->__pyx_n_s_ImportError);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet___reduce_cython);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet___setstate_cython);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_computeParameters);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_copyGenotype);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_copyInput);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_copyNeuronact);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_copyNormalization);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_copyOutput);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_getNormalizationVectors);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_initWeights);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_normphase);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_resetNet);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_resetNormalizationVecto);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_seed);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_setNormalizationVectors);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_updateNet);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PyEvonet_updateNormalizationVect);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem___reduce_cython);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem___setstate_cython);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_close);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_copyAct);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_copyDobj);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_copyDone);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_copyObs);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_isDone);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_render);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_reset);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_seed);
+  Py_VISIT(traverse_module_state->__pyx_n_s_PyErProblem_step);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
+  Py_VISIT(traverse_module_state->__pyx_n_s__23);
   Py_VISIT(traverse_module_state->__pyx_n_s__3);
-  Py_VISIT(traverse_module_state->__pyx_n_s__30);
-  Py_VISIT(traverse_module_state->__pyx_n_s_actFunct);
+  Py_VISIT(traverse_module_state->__pyx_n_s_act);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
-  Py_VISIT(traverse_module_state->__pyx_n_s_bias);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
-  Py_VISIT(traverse_module_state->__pyx_n_s_clip);
-  Py_VISIT(traverse_module_state->__pyx_n_s_computeParameters);
-  Py_VISIT(traverse_module_state->__pyx_n_s_copyGenotype);
-  Py_VISIT(traverse_module_state->__pyx_n_s_copyInput);
-  Py_VISIT(traverse_module_state->__pyx_n_s_copyNeuronact);
-  Py_VISIT(traverse_module_state->__pyx_n_s_copyNormalization);
-  Py_VISIT(traverse_module_state->__pyx_n_s_copyOutput);
+  Py_VISIT(traverse_module_state->__pyx_n_s_close);
+  Py_VISIT(traverse_module_state->__pyx_n_s_copyAct);
+  Py_VISIT(traverse_module_state->__pyx_n_s_copyDobj);
+  Py_VISIT(traverse_module_state->__pyx_n_s_copyDone);
+  Py_VISIT(traverse_module_state->__pyx_n_s_copyObs);
   Py_VISIT(traverse_module_state->__pyx_kp_u_disable);
+  Py_VISIT(traverse_module_state->__pyx_n_s_dob);
+  Py_VISIT(traverse_module_state->__pyx_n_s_done);
   Py_VISIT(traverse_module_state->__pyx_kp_u_enable);
   Py_VISIT(traverse_module_state->__pyx_kp_u_gc);
-  Py_VISIT(traverse_module_state->__pyx_n_s_geno);
-  Py_VISIT(traverse_module_state->__pyx_n_s_getNormalizationVectors);
   Py_VISIT(traverse_module_state->__pyx_n_s_getstate);
-  Py_VISIT(traverse_module_state->__pyx_n_s_heterogeneous);
-  Py_VISIT(traverse_module_state->__pyx_n_s_high);
   Py_VISIT(traverse_module_state->__pyx_n_s_import);
-  Py_VISIT(traverse_module_state->__pyx_n_s_initWeights);
   Py_VISIT(traverse_module_state->__pyx_n_s_initializing);
-  Py_VISIT(traverse_module_state->__pyx_n_s_inp);
+  Py_VISIT(traverse_module_state->__pyx_n_s_isDone);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_kp_u_isenabled);
-  Py_VISIT(traverse_module_state->__pyx_n_s_low);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
-  Py_VISIT(traverse_module_state->__pyx_n_s_na);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
-  Py_VISIT(traverse_module_state->__pyx_n_s_nbins);
-  Py_VISIT(traverse_module_state->__pyx_n_s_net);
-  Py_VISIT(traverse_module_state->__pyx_n_s_netType);
-  Py_VISIT(traverse_module_state->__pyx_kp_s_net_pyx);
-  Py_VISIT(traverse_module_state->__pyx_n_s_nhiddens);
-  Py_VISIT(traverse_module_state->__pyx_n_s_nhiddens2);
-  Py_VISIT(traverse_module_state->__pyx_n_s_ninputs);
-  Py_VISIT(traverse_module_state->__pyx_n_s_nlayers);
-  Py_VISIT(traverse_module_state->__pyx_n_s_nnetworks);
-  Py_VISIT(traverse_module_state->__pyx_n_s_no);
   Py_VISIT(traverse_module_state->__pyx_kp_s_no_default___reduce___due_to_non);
-  Py_VISIT(traverse_module_state->__pyx_n_s_normalize);
-  Py_VISIT(traverse_module_state->__pyx_n_s_normphase);
-  Py_VISIT(traverse_module_state->__pyx_n_s_noutputs);
   Py_VISIT(traverse_module_state->__pyx_n_s_np);
   Py_VISIT(traverse_module_state->__pyx_n_s_numpy);
   Py_VISIT(traverse_module_state->__pyx_kp_s_numpy_core_multiarray_failed_to);
   Py_VISIT(traverse_module_state->__pyx_kp_s_numpy_core_umath_failed_to_impor);
-  Py_VISIT(traverse_module_state->__pyx_n_s_outType);
-  Py_VISIT(traverse_module_state->__pyx_n_s_outp);
-  Py_VISIT(traverse_module_state->__pyx_n_s_phase);
+  Py_VISIT(traverse_module_state->__pyx_n_s_obs);
   Py_VISIT(traverse_module_state->__pyx_n_s_pyx_state);
-  Py_VISIT(traverse_module_state->__pyx_n_s_randAct);
-  Py_VISIT(traverse_module_state->__pyx_n_s_randActR);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_ex);
-  Py_VISIT(traverse_module_state->__pyx_n_s_resetNet);
-  Py_VISIT(traverse_module_state->__pyx_n_s_resetNormalizationVectors);
+  Py_VISIT(traverse_module_state->__pyx_n_s_render);
+  Py_VISIT(traverse_module_state->__pyx_n_s_reset);
   Py_VISIT(traverse_module_state->__pyx_n_s_s);
   Py_VISIT(traverse_module_state->__pyx_n_s_seed);
   Py_VISIT(traverse_module_state->__pyx_n_s_self);
-  Py_VISIT(traverse_module_state->__pyx_n_s_setNormalizationVectors);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_spec);
+  Py_VISIT(traverse_module_state->__pyx_n_s_step);
   Py_VISIT(traverse_module_state->__pyx_kp_s_stringsource);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_time);
-  Py_VISIT(traverse_module_state->__pyx_n_s_updateNet);
-  Py_VISIT(traverse_module_state->__pyx_n_s_updateNormalizationVectors);
-  Py_VISIT(traverse_module_state->__pyx_n_s_wInit);
-  Py_VISIT(traverse_module_state->__pyx_n_s_wrange);
+  Py_VISIT(traverse_module_state->__pyx_float_1_0);
+  Py_VISIT(traverse_module_state->__pyx_float_neg_1_0);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__2);
   Py_VISIT(traverse_module_state->__pyx_tuple__4);
   Py_VISIT(traverse_module_state->__pyx_tuple__6);
-  Py_VISIT(traverse_module_state->__pyx_tuple__8);
-  Py_VISIT(traverse_module_state->__pyx_tuple__10);
-  Py_VISIT(traverse_module_state->__pyx_tuple__12);
-  Py_VISIT(traverse_module_state->__pyx_tuple__14);
-  Py_VISIT(traverse_module_state->__pyx_tuple__16);
+  Py_VISIT(traverse_module_state->__pyx_tuple__11);
+  Py_VISIT(traverse_module_state->__pyx_tuple__13);
+  Py_VISIT(traverse_module_state->__pyx_tuple__15);
+  Py_VISIT(traverse_module_state->__pyx_tuple__17);
   Py_VISIT(traverse_module_state->__pyx_tuple__21);
-  Py_VISIT(traverse_module_state->__pyx_tuple__28);
   Py_VISIT(traverse_module_state->__pyx_codeobj__5);
   Py_VISIT(traverse_module_state->__pyx_codeobj__7);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__8);
   Py_VISIT(traverse_module_state->__pyx_codeobj__9);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__11);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__13);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__15);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__17);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__10);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__12);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__14);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__16);
   Py_VISIT(traverse_module_state->__pyx_codeobj__18);
   Py_VISIT(traverse_module_state->__pyx_codeobj__19);
   Py_VISIT(traverse_module_state->__pyx_codeobj__20);
   Py_VISIT(traverse_module_state->__pyx_codeobj__22);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__23);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__24);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__25);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__26);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__27);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__29);
   return 0;
 }
 #endif
@@ -3147,144 +2969,107 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_ptype_5numpy_flexible __pyx_mstate_global->__pyx_ptype_5numpy_flexible
 #define __pyx_ptype_5numpy_character __pyx_mstate_global->__pyx_ptype_5numpy_character
 #define __pyx_ptype_5numpy_ufunc __pyx_mstate_global->__pyx_ptype_5numpy_ufunc
-#define __pyx_ptype_3net_PyEvonet __pyx_mstate_global->__pyx_ptype_3net_PyEvonet
-#define __pyx_type_3net_PyEvonet __pyx_mstate_global->__pyx_type_3net_PyEvonet
+#define __pyx_ptype_10ErPredprey_PyErProblem __pyx_mstate_global->__pyx_ptype_10ErPredprey_PyErProblem
+#define __pyx_type_10ErPredprey_PyErProblem __pyx_mstate_global->__pyx_type_10ErPredprey_PyErProblem
+#define __pyx_n_s_ErPredprey __pyx_mstate_global->__pyx_n_s_ErPredprey
+#define __pyx_kp_s_ErPredprey_pyx __pyx_mstate_global->__pyx_kp_s_ErPredprey_pyx
 #define __pyx_n_s_ImportError __pyx_mstate_global->__pyx_n_s_ImportError
-#define __pyx_n_s_PyEvonet __pyx_mstate_global->__pyx_n_s_PyEvonet
-#define __pyx_n_s_PyEvonet___reduce_cython __pyx_mstate_global->__pyx_n_s_PyEvonet___reduce_cython
-#define __pyx_n_s_PyEvonet___setstate_cython __pyx_mstate_global->__pyx_n_s_PyEvonet___setstate_cython
-#define __pyx_n_s_PyEvonet_computeParameters __pyx_mstate_global->__pyx_n_s_PyEvonet_computeParameters
-#define __pyx_n_s_PyEvonet_copyGenotype __pyx_mstate_global->__pyx_n_s_PyEvonet_copyGenotype
-#define __pyx_n_s_PyEvonet_copyInput __pyx_mstate_global->__pyx_n_s_PyEvonet_copyInput
-#define __pyx_n_s_PyEvonet_copyNeuronact __pyx_mstate_global->__pyx_n_s_PyEvonet_copyNeuronact
-#define __pyx_n_s_PyEvonet_copyNormalization __pyx_mstate_global->__pyx_n_s_PyEvonet_copyNormalization
-#define __pyx_n_s_PyEvonet_copyOutput __pyx_mstate_global->__pyx_n_s_PyEvonet_copyOutput
-#define __pyx_n_s_PyEvonet_getNormalizationVectors __pyx_mstate_global->__pyx_n_s_PyEvonet_getNormalizationVectors
-#define __pyx_n_s_PyEvonet_initWeights __pyx_mstate_global->__pyx_n_s_PyEvonet_initWeights
-#define __pyx_n_s_PyEvonet_normphase __pyx_mstate_global->__pyx_n_s_PyEvonet_normphase
-#define __pyx_n_s_PyEvonet_resetNet __pyx_mstate_global->__pyx_n_s_PyEvonet_resetNet
-#define __pyx_n_s_PyEvonet_resetNormalizationVecto __pyx_mstate_global->__pyx_n_s_PyEvonet_resetNormalizationVecto
-#define __pyx_n_s_PyEvonet_seed __pyx_mstate_global->__pyx_n_s_PyEvonet_seed
-#define __pyx_n_s_PyEvonet_setNormalizationVectors __pyx_mstate_global->__pyx_n_s_PyEvonet_setNormalizationVectors
-#define __pyx_n_s_PyEvonet_updateNet __pyx_mstate_global->__pyx_n_s_PyEvonet_updateNet
-#define __pyx_n_s_PyEvonet_updateNormalizationVect __pyx_mstate_global->__pyx_n_s_PyEvonet_updateNormalizationVect
+#define __pyx_n_s_PyErProblem __pyx_mstate_global->__pyx_n_s_PyErProblem
+#define __pyx_n_s_PyErProblem___reduce_cython __pyx_mstate_global->__pyx_n_s_PyErProblem___reduce_cython
+#define __pyx_n_s_PyErProblem___setstate_cython __pyx_mstate_global->__pyx_n_s_PyErProblem___setstate_cython
+#define __pyx_n_s_PyErProblem_close __pyx_mstate_global->__pyx_n_s_PyErProblem_close
+#define __pyx_n_s_PyErProblem_copyAct __pyx_mstate_global->__pyx_n_s_PyErProblem_copyAct
+#define __pyx_n_s_PyErProblem_copyDobj __pyx_mstate_global->__pyx_n_s_PyErProblem_copyDobj
+#define __pyx_n_s_PyErProblem_copyDone __pyx_mstate_global->__pyx_n_s_PyErProblem_copyDone
+#define __pyx_n_s_PyErProblem_copyObs __pyx_mstate_global->__pyx_n_s_PyErProblem_copyObs
+#define __pyx_n_s_PyErProblem_isDone __pyx_mstate_global->__pyx_n_s_PyErProblem_isDone
+#define __pyx_n_s_PyErProblem_render __pyx_mstate_global->__pyx_n_s_PyErProblem_render
+#define __pyx_n_s_PyErProblem_reset __pyx_mstate_global->__pyx_n_s_PyErProblem_reset
+#define __pyx_n_s_PyErProblem_seed __pyx_mstate_global->__pyx_n_s_PyErProblem_seed
+#define __pyx_n_s_PyErProblem_step __pyx_mstate_global->__pyx_n_s_PyErProblem_step
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
+#define __pyx_n_s__23 __pyx_mstate_global->__pyx_n_s__23
 #define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
-#define __pyx_n_s__30 __pyx_mstate_global->__pyx_n_s__30
-#define __pyx_n_s_actFunct __pyx_mstate_global->__pyx_n_s_actFunct
+#define __pyx_n_s_act __pyx_mstate_global->__pyx_n_s_act
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
-#define __pyx_n_s_bias __pyx_mstate_global->__pyx_n_s_bias
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
-#define __pyx_n_s_clip __pyx_mstate_global->__pyx_n_s_clip
-#define __pyx_n_s_computeParameters __pyx_mstate_global->__pyx_n_s_computeParameters
-#define __pyx_n_s_copyGenotype __pyx_mstate_global->__pyx_n_s_copyGenotype
-#define __pyx_n_s_copyInput __pyx_mstate_global->__pyx_n_s_copyInput
-#define __pyx_n_s_copyNeuronact __pyx_mstate_global->__pyx_n_s_copyNeuronact
-#define __pyx_n_s_copyNormalization __pyx_mstate_global->__pyx_n_s_copyNormalization
-#define __pyx_n_s_copyOutput __pyx_mstate_global->__pyx_n_s_copyOutput
+#define __pyx_n_s_close __pyx_mstate_global->__pyx_n_s_close
+#define __pyx_n_s_copyAct __pyx_mstate_global->__pyx_n_s_copyAct
+#define __pyx_n_s_copyDobj __pyx_mstate_global->__pyx_n_s_copyDobj
+#define __pyx_n_s_copyDone __pyx_mstate_global->__pyx_n_s_copyDone
+#define __pyx_n_s_copyObs __pyx_mstate_global->__pyx_n_s_copyObs
 #define __pyx_kp_u_disable __pyx_mstate_global->__pyx_kp_u_disable
+#define __pyx_n_s_dob __pyx_mstate_global->__pyx_n_s_dob
+#define __pyx_n_s_done __pyx_mstate_global->__pyx_n_s_done
 #define __pyx_kp_u_enable __pyx_mstate_global->__pyx_kp_u_enable
 #define __pyx_kp_u_gc __pyx_mstate_global->__pyx_kp_u_gc
-#define __pyx_n_s_geno __pyx_mstate_global->__pyx_n_s_geno
-#define __pyx_n_s_getNormalizationVectors __pyx_mstate_global->__pyx_n_s_getNormalizationVectors
 #define __pyx_n_s_getstate __pyx_mstate_global->__pyx_n_s_getstate
-#define __pyx_n_s_heterogeneous __pyx_mstate_global->__pyx_n_s_heterogeneous
-#define __pyx_n_s_high __pyx_mstate_global->__pyx_n_s_high
 #define __pyx_n_s_import __pyx_mstate_global->__pyx_n_s_import
-#define __pyx_n_s_initWeights __pyx_mstate_global->__pyx_n_s_initWeights
 #define __pyx_n_s_initializing __pyx_mstate_global->__pyx_n_s_initializing
-#define __pyx_n_s_inp __pyx_mstate_global->__pyx_n_s_inp
+#define __pyx_n_s_isDone __pyx_mstate_global->__pyx_n_s_isDone
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_kp_u_isenabled __pyx_mstate_global->__pyx_kp_u_isenabled
-#define __pyx_n_s_low __pyx_mstate_global->__pyx_n_s_low
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
-#define __pyx_n_s_na __pyx_mstate_global->__pyx_n_s_na
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
-#define __pyx_n_s_nbins __pyx_mstate_global->__pyx_n_s_nbins
-#define __pyx_n_s_net __pyx_mstate_global->__pyx_n_s_net
-#define __pyx_n_s_netType __pyx_mstate_global->__pyx_n_s_netType
-#define __pyx_kp_s_net_pyx __pyx_mstate_global->__pyx_kp_s_net_pyx
-#define __pyx_n_s_nhiddens __pyx_mstate_global->__pyx_n_s_nhiddens
-#define __pyx_n_s_nhiddens2 __pyx_mstate_global->__pyx_n_s_nhiddens2
-#define __pyx_n_s_ninputs __pyx_mstate_global->__pyx_n_s_ninputs
-#define __pyx_n_s_nlayers __pyx_mstate_global->__pyx_n_s_nlayers
-#define __pyx_n_s_nnetworks __pyx_mstate_global->__pyx_n_s_nnetworks
-#define __pyx_n_s_no __pyx_mstate_global->__pyx_n_s_no
 #define __pyx_kp_s_no_default___reduce___due_to_non __pyx_mstate_global->__pyx_kp_s_no_default___reduce___due_to_non
-#define __pyx_n_s_normalize __pyx_mstate_global->__pyx_n_s_normalize
-#define __pyx_n_s_normphase __pyx_mstate_global->__pyx_n_s_normphase
-#define __pyx_n_s_noutputs __pyx_mstate_global->__pyx_n_s_noutputs
 #define __pyx_n_s_np __pyx_mstate_global->__pyx_n_s_np
 #define __pyx_n_s_numpy __pyx_mstate_global->__pyx_n_s_numpy
 #define __pyx_kp_s_numpy_core_multiarray_failed_to __pyx_mstate_global->__pyx_kp_s_numpy_core_multiarray_failed_to
 #define __pyx_kp_s_numpy_core_umath_failed_to_impor __pyx_mstate_global->__pyx_kp_s_numpy_core_umath_failed_to_impor
-#define __pyx_n_s_outType __pyx_mstate_global->__pyx_n_s_outType
-#define __pyx_n_s_outp __pyx_mstate_global->__pyx_n_s_outp
-#define __pyx_n_s_phase __pyx_mstate_global->__pyx_n_s_phase
+#define __pyx_n_s_obs __pyx_mstate_global->__pyx_n_s_obs
 #define __pyx_n_s_pyx_state __pyx_mstate_global->__pyx_n_s_pyx_state
-#define __pyx_n_s_randAct __pyx_mstate_global->__pyx_n_s_randAct
-#define __pyx_n_s_randActR __pyx_mstate_global->__pyx_n_s_randActR
 #define __pyx_n_s_reduce __pyx_mstate_global->__pyx_n_s_reduce
 #define __pyx_n_s_reduce_cython __pyx_mstate_global->__pyx_n_s_reduce_cython
 #define __pyx_n_s_reduce_ex __pyx_mstate_global->__pyx_n_s_reduce_ex
-#define __pyx_n_s_resetNet __pyx_mstate_global->__pyx_n_s_resetNet
-#define __pyx_n_s_resetNormalizationVectors __pyx_mstate_global->__pyx_n_s_resetNormalizationVectors
+#define __pyx_n_s_render __pyx_mstate_global->__pyx_n_s_render
+#define __pyx_n_s_reset __pyx_mstate_global->__pyx_n_s_reset
 #define __pyx_n_s_s __pyx_mstate_global->__pyx_n_s_s
 #define __pyx_n_s_seed __pyx_mstate_global->__pyx_n_s_seed
 #define __pyx_n_s_self __pyx_mstate_global->__pyx_n_s_self
-#define __pyx_n_s_setNormalizationVectors __pyx_mstate_global->__pyx_n_s_setNormalizationVectors
 #define __pyx_n_s_setstate __pyx_mstate_global->__pyx_n_s_setstate
 #define __pyx_n_s_setstate_cython __pyx_mstate_global->__pyx_n_s_setstate_cython
 #define __pyx_n_s_spec __pyx_mstate_global->__pyx_n_s_spec
+#define __pyx_n_s_step __pyx_mstate_global->__pyx_n_s_step
 #define __pyx_kp_s_stringsource __pyx_mstate_global->__pyx_kp_s_stringsource
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_time __pyx_mstate_global->__pyx_n_s_time
-#define __pyx_n_s_updateNet __pyx_mstate_global->__pyx_n_s_updateNet
-#define __pyx_n_s_updateNormalizationVectors __pyx_mstate_global->__pyx_n_s_updateNormalizationVectors
-#define __pyx_n_s_wInit __pyx_mstate_global->__pyx_n_s_wInit
-#define __pyx_n_s_wrange __pyx_mstate_global->__pyx_n_s_wrange
+#define __pyx_float_1_0 __pyx_mstate_global->__pyx_float_1_0
+#define __pyx_float_neg_1_0 __pyx_mstate_global->__pyx_float_neg_1_0
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
 #define __pyx_tuple__2 __pyx_mstate_global->__pyx_tuple__2
 #define __pyx_tuple__4 __pyx_mstate_global->__pyx_tuple__4
 #define __pyx_tuple__6 __pyx_mstate_global->__pyx_tuple__6
-#define __pyx_tuple__8 __pyx_mstate_global->__pyx_tuple__8
-#define __pyx_tuple__10 __pyx_mstate_global->__pyx_tuple__10
-#define __pyx_tuple__12 __pyx_mstate_global->__pyx_tuple__12
-#define __pyx_tuple__14 __pyx_mstate_global->__pyx_tuple__14
-#define __pyx_tuple__16 __pyx_mstate_global->__pyx_tuple__16
+#define __pyx_tuple__11 __pyx_mstate_global->__pyx_tuple__11
+#define __pyx_tuple__13 __pyx_mstate_global->__pyx_tuple__13
+#define __pyx_tuple__15 __pyx_mstate_global->__pyx_tuple__15
+#define __pyx_tuple__17 __pyx_mstate_global->__pyx_tuple__17
 #define __pyx_tuple__21 __pyx_mstate_global->__pyx_tuple__21
-#define __pyx_tuple__28 __pyx_mstate_global->__pyx_tuple__28
 #define __pyx_codeobj__5 __pyx_mstate_global->__pyx_codeobj__5
 #define __pyx_codeobj__7 __pyx_mstate_global->__pyx_codeobj__7
+#define __pyx_codeobj__8 __pyx_mstate_global->__pyx_codeobj__8
 #define __pyx_codeobj__9 __pyx_mstate_global->__pyx_codeobj__9
-#define __pyx_codeobj__11 __pyx_mstate_global->__pyx_codeobj__11
-#define __pyx_codeobj__13 __pyx_mstate_global->__pyx_codeobj__13
-#define __pyx_codeobj__15 __pyx_mstate_global->__pyx_codeobj__15
-#define __pyx_codeobj__17 __pyx_mstate_global->__pyx_codeobj__17
+#define __pyx_codeobj__10 __pyx_mstate_global->__pyx_codeobj__10
+#define __pyx_codeobj__12 __pyx_mstate_global->__pyx_codeobj__12
+#define __pyx_codeobj__14 __pyx_mstate_global->__pyx_codeobj__14
+#define __pyx_codeobj__16 __pyx_mstate_global->__pyx_codeobj__16
 #define __pyx_codeobj__18 __pyx_mstate_global->__pyx_codeobj__18
 #define __pyx_codeobj__19 __pyx_mstate_global->__pyx_codeobj__19
 #define __pyx_codeobj__20 __pyx_mstate_global->__pyx_codeobj__20
 #define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
-#define __pyx_codeobj__23 __pyx_mstate_global->__pyx_codeobj__23
-#define __pyx_codeobj__24 __pyx_mstate_global->__pyx_codeobj__24
-#define __pyx_codeobj__25 __pyx_mstate_global->__pyx_codeobj__25
-#define __pyx_codeobj__26 __pyx_mstate_global->__pyx_codeobj__26
-#define __pyx_codeobj__27 __pyx_mstate_global->__pyx_codeobj__27
-#define __pyx_codeobj__29 __pyx_mstate_global->__pyx_codeobj__29
 #endif
 /* #### Code section: module_code ### */
 
-/* "net.pyx":26
- *     cdef Evonet c_net
+/* "ErPredprey.pyx":26
+ *     cdef Problem cproblem
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
- *         self.c_net = Evonet()
+ *         self.cproblem = Problem()
  * 
  */
 
 /* Python wrapper */
-static int __pyx_pw_3net_8PyEvonet_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_3net_8PyEvonet_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_10ErPredprey_11PyErProblem_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_10ErPredprey_11PyErProblem_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
   int __pyx_r;
@@ -3293,381 +3078,42 @@ static int __pyx_pw_3net_8PyEvonet_1__cinit__(PyObject *__pyx_v_self, PyObject *
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, __pyx_nargs); return -1;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_VARARGS(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
-  __pyx_r = __pyx_pf_3net_8PyEvonet___cinit__(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem___cinit__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_3net_8PyEvonet___cinit__(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static int __pyx_pf_10ErPredprey_11PyErProblem___cinit__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  Evonet __pyx_t_1;
+  Problem __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "net.pyx":27
+  /* "ErPredprey.pyx":27
  * 
  *     def __cinit__(self):
- *         self.c_net = Evonet()             # <<<<<<<<<<<<<<
- * 
- *     def __cinit__(self, int nnetworks, int heterogeneous, int ninputs, int nhiddens, int noutputs, int nlayers, int nhiddens2, int bias, int netType, int actFunct, int outType, int wInit, int clip, int normalize, int randAct, double randActR, double wrange, int nbins, double low, double high):
- */
-  try {
-    __pyx_t_1 = Evonet();
-  } catch(...) {
-    __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 27, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
-
-  /* "net.pyx":26
- *     cdef Evonet c_net
- * 
- *     def __cinit__(self):             # <<<<<<<<<<<<<<
- *         self.c_net = Evonet()
- * 
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":29
- *         self.c_net = Evonet()
- * 
- *     def __cinit__(self, int nnetworks, int heterogeneous, int ninputs, int nhiddens, int noutputs, int nlayers, int nhiddens2, int bias, int netType, int actFunct, int outType, int wInit, int clip, int normalize, int randAct, double randActR, double wrange, int nbins, double low, double high):             # <<<<<<<<<<<<<<
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
- * 
- */
-
-/* Python wrapper */
-static int __pyx_pw_3net_8PyEvonet_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_3net_8PyEvonet_3__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  int __pyx_v_nnetworks;
-  int __pyx_v_heterogeneous;
-  int __pyx_v_ninputs;
-  int __pyx_v_nhiddens;
-  int __pyx_v_noutputs;
-  int __pyx_v_nlayers;
-  int __pyx_v_nhiddens2;
-  int __pyx_v_bias;
-  int __pyx_v_netType;
-  int __pyx_v_actFunct;
-  int __pyx_v_outType;
-  int __pyx_v_wInit;
-  int __pyx_v_clip;
-  int __pyx_v_normalize;
-  int __pyx_v_randAct;
-  double __pyx_v_randActR;
-  double __pyx_v_wrange;
-  int __pyx_v_nbins;
-  double __pyx_v_low;
-  double __pyx_v_high;
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_nnetworks,&__pyx_n_s_heterogeneous,&__pyx_n_s_ninputs,&__pyx_n_s_nhiddens,&__pyx_n_s_noutputs,&__pyx_n_s_nlayers,&__pyx_n_s_nhiddens2,&__pyx_n_s_bias,&__pyx_n_s_netType,&__pyx_n_s_actFunct,&__pyx_n_s_outType,&__pyx_n_s_wInit,&__pyx_n_s_clip,&__pyx_n_s_normalize,&__pyx_n_s_randAct,&__pyx_n_s_randActR,&__pyx_n_s_wrange,&__pyx_n_s_nbins,&__pyx_n_s_low,&__pyx_n_s_high,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_nnetworks,&__pyx_n_s_heterogeneous,&__pyx_n_s_ninputs,&__pyx_n_s_nhiddens,&__pyx_n_s_noutputs,&__pyx_n_s_nlayers,&__pyx_n_s_nhiddens2,&__pyx_n_s_bias,&__pyx_n_s_netType,&__pyx_n_s_actFunct,&__pyx_n_s_outType,&__pyx_n_s_wInit,&__pyx_n_s_clip,&__pyx_n_s_normalize,&__pyx_n_s_randAct,&__pyx_n_s_randActR,&__pyx_n_s_wrange,&__pyx_n_s_nbins,&__pyx_n_s_low,&__pyx_n_s_high,0};
-    #endif
-    PyObject* values[20] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case 20: values[19] = __Pyx_Arg_VARARGS(__pyx_args, 19);
-        CYTHON_FALLTHROUGH;
-        case 19: values[18] = __Pyx_Arg_VARARGS(__pyx_args, 18);
-        CYTHON_FALLTHROUGH;
-        case 18: values[17] = __Pyx_Arg_VARARGS(__pyx_args, 17);
-        CYTHON_FALLTHROUGH;
-        case 17: values[16] = __Pyx_Arg_VARARGS(__pyx_args, 16);
-        CYTHON_FALLTHROUGH;
-        case 16: values[15] = __Pyx_Arg_VARARGS(__pyx_args, 15);
-        CYTHON_FALLTHROUGH;
-        case 15: values[14] = __Pyx_Arg_VARARGS(__pyx_args, 14);
-        CYTHON_FALLTHROUGH;
-        case 14: values[13] = __Pyx_Arg_VARARGS(__pyx_args, 13);
-        CYTHON_FALLTHROUGH;
-        case 13: values[12] = __Pyx_Arg_VARARGS(__pyx_args, 12);
-        CYTHON_FALLTHROUGH;
-        case 12: values[11] = __Pyx_Arg_VARARGS(__pyx_args, 11);
-        CYTHON_FALLTHROUGH;
-        case 11: values[10] = __Pyx_Arg_VARARGS(__pyx_args, 10);
-        CYTHON_FALLTHROUGH;
-        case 10: values[9] = __Pyx_Arg_VARARGS(__pyx_args, 9);
-        CYTHON_FALLTHROUGH;
-        case  9: values[8] = __Pyx_Arg_VARARGS(__pyx_args, 8);
-        CYTHON_FALLTHROUGH;
-        case  8: values[7] = __Pyx_Arg_VARARGS(__pyx_args, 7);
-        CYTHON_FALLTHROUGH;
-        case  7: values[6] = __Pyx_Arg_VARARGS(__pyx_args, 6);
-        CYTHON_FALLTHROUGH;
-        case  6: values[5] = __Pyx_Arg_VARARGS(__pyx_args, 5);
-        CYTHON_FALLTHROUGH;
-        case  5: values[4] = __Pyx_Arg_VARARGS(__pyx_args, 4);
-        CYTHON_FALLTHROUGH;
-        case  4: values[3] = __Pyx_Arg_VARARGS(__pyx_args, 3);
-        CYTHON_FALLTHROUGH;
-        case  3: values[2] = __Pyx_Arg_VARARGS(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = __Pyx_Arg_VARARGS(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_VARARGS(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_nnetworks)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_heterogeneous)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 1); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_ninputs)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 2); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  3:
-        if (likely((values[3] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_nhiddens)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 3); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  4:
-        if (likely((values[4] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_noutputs)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 4); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  5:
-        if (likely((values[5] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_nlayers)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 5); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  6:
-        if (likely((values[6] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_nhiddens2)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 6); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  7:
-        if (likely((values[7] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_bias)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 7); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  8:
-        if (likely((values[8] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_netType)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 8); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  9:
-        if (likely((values[9] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_actFunct)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 9); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 10:
-        if (likely((values[10] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_outType)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 10); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 11:
-        if (likely((values[11] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_wInit)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 11); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 12:
-        if (likely((values[12] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_clip)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 12); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 13:
-        if (likely((values[13] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_normalize)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 13); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 14:
-        if (likely((values[14] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_randAct)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 14); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 15:
-        if (likely((values[15] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_randActR)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 15); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 16:
-        if (likely((values[16] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_wrange)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 16); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 17:
-        if (likely((values[17] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_nbins)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 17); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 18:
-        if (likely((values[18] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_low)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 18); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case 19:
-        if (likely((values[19] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_high)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, 19); __PYX_ERR(1, 29, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(1, 29, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 20)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
-      values[1] = __Pyx_Arg_VARARGS(__pyx_args, 1);
-      values[2] = __Pyx_Arg_VARARGS(__pyx_args, 2);
-      values[3] = __Pyx_Arg_VARARGS(__pyx_args, 3);
-      values[4] = __Pyx_Arg_VARARGS(__pyx_args, 4);
-      values[5] = __Pyx_Arg_VARARGS(__pyx_args, 5);
-      values[6] = __Pyx_Arg_VARARGS(__pyx_args, 6);
-      values[7] = __Pyx_Arg_VARARGS(__pyx_args, 7);
-      values[8] = __Pyx_Arg_VARARGS(__pyx_args, 8);
-      values[9] = __Pyx_Arg_VARARGS(__pyx_args, 9);
-      values[10] = __Pyx_Arg_VARARGS(__pyx_args, 10);
-      values[11] = __Pyx_Arg_VARARGS(__pyx_args, 11);
-      values[12] = __Pyx_Arg_VARARGS(__pyx_args, 12);
-      values[13] = __Pyx_Arg_VARARGS(__pyx_args, 13);
-      values[14] = __Pyx_Arg_VARARGS(__pyx_args, 14);
-      values[15] = __Pyx_Arg_VARARGS(__pyx_args, 15);
-      values[16] = __Pyx_Arg_VARARGS(__pyx_args, 16);
-      values[17] = __Pyx_Arg_VARARGS(__pyx_args, 17);
-      values[18] = __Pyx_Arg_VARARGS(__pyx_args, 18);
-      values[19] = __Pyx_Arg_VARARGS(__pyx_args, 19);
-    }
-    __pyx_v_nnetworks = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_nnetworks == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_heterogeneous = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_heterogeneous == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_ninputs = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_ninputs == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_nhiddens = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_nhiddens == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_noutputs = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_noutputs == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_nlayers = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_nlayers == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_nhiddens2 = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_nhiddens2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_bias = __Pyx_PyInt_As_int(values[7]); if (unlikely((__pyx_v_bias == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_netType = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_netType == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_actFunct = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_actFunct == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_outType = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_outType == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_wInit = __Pyx_PyInt_As_int(values[11]); if (unlikely((__pyx_v_wInit == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_clip = __Pyx_PyInt_As_int(values[12]); if (unlikely((__pyx_v_clip == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_normalize = __Pyx_PyInt_As_int(values[13]); if (unlikely((__pyx_v_normalize == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_randAct = __Pyx_PyInt_As_int(values[14]); if (unlikely((__pyx_v_randAct == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_randActR = __pyx_PyFloat_AsDouble(values[15]); if (unlikely((__pyx_v_randActR == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_wrange = __pyx_PyFloat_AsDouble(values[16]); if (unlikely((__pyx_v_wrange == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_nbins = __Pyx_PyInt_As_int(values[17]); if (unlikely((__pyx_v_nbins == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_low = __pyx_PyFloat_AsDouble(values[18]); if (unlikely((__pyx_v_low == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-    __pyx_v_high = __pyx_PyFloat_AsDouble(values[19]); if (unlikely((__pyx_v_high == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 20, 20, __pyx_nargs); __PYX_ERR(1, 29, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return -1;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_2__cinit__(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_nnetworks, __pyx_v_heterogeneous, __pyx_v_ninputs, __pyx_v_nhiddens, __pyx_v_noutputs, __pyx_v_nlayers, __pyx_v_nhiddens2, __pyx_v_bias, __pyx_v_netType, __pyx_v_actFunct, __pyx_v_outType, __pyx_v_wInit, __pyx_v_clip, __pyx_v_normalize, __pyx_v_randAct, __pyx_v_randActR, __pyx_v_wrange, __pyx_v_nbins, __pyx_v_low, __pyx_v_high);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_3net_8PyEvonet_2__cinit__(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_nnetworks, int __pyx_v_heterogeneous, int __pyx_v_ninputs, int __pyx_v_nhiddens, int __pyx_v_noutputs, int __pyx_v_nlayers, int __pyx_v_nhiddens2, int __pyx_v_bias, int __pyx_v_netType, int __pyx_v_actFunct, int __pyx_v_outType, int __pyx_v_wInit, int __pyx_v_clip, int __pyx_v_normalize, int __pyx_v_randAct, double __pyx_v_randActR, double __pyx_v_wrange, int __pyx_v_nbins, double __pyx_v_low, double __pyx_v_high) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  Evonet __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__cinit__", 0);
-
-  /* "net.pyx":30
- * 
- *     def __cinit__(self, int nnetworks, int heterogeneous, int ninputs, int nhiddens, int noutputs, int nlayers, int nhiddens2, int bias, int netType, int actFunct, int outType, int wInit, int clip, int normalize, int randAct, double randActR, double wrange, int nbins, double low, double high):
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)             # <<<<<<<<<<<<<<
+ *         self.cproblem = Problem()             # <<<<<<<<<<<<<<
  * 
  *     def seed(self, int s):
  */
   try {
-    __pyx_t_1 = Evonet(__pyx_v_nnetworks, __pyx_v_heterogeneous, __pyx_v_ninputs, __pyx_v_nhiddens, __pyx_v_noutputs, __pyx_v_nlayers, __pyx_v_nhiddens2, __pyx_v_bias, __pyx_v_netType, __pyx_v_actFunct, __pyx_v_outType, __pyx_v_wInit, __pyx_v_clip, __pyx_v_normalize, __pyx_v_randAct, __pyx_v_randActR, __pyx_v_wrange, __pyx_v_nbins, __pyx_v_low, __pyx_v_high);
+    __pyx_t_1 = Problem();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 30, __pyx_L1_error)
+    __PYX_ERR(1, 27, __pyx_L1_error)
   }
-  __pyx_v_self->c_net = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
+  __pyx_v_self->cproblem = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "net.pyx":29
- *         self.c_net = Evonet()
+  /* "ErPredprey.pyx":26
+ *     cdef Problem cproblem
  * 
- *     def __cinit__(self, int nnetworks, int heterogeneous, int ninputs, int nhiddens, int noutputs, int nlayers, int nhiddens2, int bias, int netType, int actFunct, int outType, int wInit, int clip, int normalize, int randAct, double randActR, double wrange, int nbins, double low, double high):             # <<<<<<<<<<<<<<
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem = Problem()
  * 
  */
 
@@ -3675,31 +3121,31 @@ static int __pyx_pf_3net_8PyEvonet_2__cinit__(struct __pyx_obj_3net_PyEvonet *__
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "net.pyx":32
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
+/* "ErPredprey.pyx":29
+ *         self.cproblem = Problem()
  * 
  *     def seed(self, int s):             # <<<<<<<<<<<<<<
- *         self.c_net.seed(s)
+ *         self.cproblem.seed(s)
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_5seed(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_3seed(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_5seed = {"seed", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_5seed, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_5seed(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_3seed = {"seed", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_3seed, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_3seed(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3736,54 +3182,54 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_s)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 32, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "seed") < 0)) __PYX_ERR(1, 32, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "seed") < 0)) __PYX_ERR(1, 29, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_s = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_s == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 32, __pyx_L3_error)
+    __pyx_v_s = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_s == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 29, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("seed", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 32, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("seed", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 29, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.seed", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.seed", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_4seed(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_s);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_2seed(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v_s);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_4seed(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_s) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_2seed(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, int __pyx_v_s) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("seed", 0);
 
-  /* "net.pyx":33
+  /* "ErPredprey.pyx":30
  * 
  *     def seed(self, int s):
- *         self.c_net.seed(s)             # <<<<<<<<<<<<<<
+ *         self.cproblem.seed(s)             # <<<<<<<<<<<<<<
  * 
- *     def resetNet(self):
+ *     def reset(self):
  */
-  __pyx_v_self->c_net.seed(__pyx_v_s);
+  __pyx_v_self->cproblem.seed(__pyx_v_s);
 
-  /* "net.pyx":32
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
+  /* "ErPredprey.pyx":29
+ *         self.cproblem = Problem()
  * 
  *     def seed(self, int s):             # <<<<<<<<<<<<<<
- *         self.c_net.seed(s)
+ *         self.cproblem.seed(s)
  * 
  */
 
@@ -3794,24 +3240,24 @@ static PyObject *__pyx_pf_3net_8PyEvonet_4seed(struct __pyx_obj_3net_PyEvonet *_
   return __pyx_r;
 }
 
-/* "net.pyx":35
- *         self.c_net.seed(s)
+/* "ErPredprey.pyx":32
+ *         self.cproblem.seed(s)
  * 
- *     def resetNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNet()
+ *     def reset(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.reset()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_7resetNet(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_5reset(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_7resetNet = {"resetNet", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_7resetNet, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_7resetNet(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_5reset = {"reset", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_5reset, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_5reset(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3824,36 +3270,36 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("resetNet (wrapper)", 0);
+  __Pyx_RefNannySetupContext("reset (wrapper)", 0);
   if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("resetNet", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "resetNet", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_6resetNet(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+    __Pyx_RaiseArgtupleInvalid("reset", 1, 0, 0, __pyx_nargs); return NULL;}
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "reset", 0))) return NULL;
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_4reset(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_6resetNet(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_4reset(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("resetNet", 0);
+  __Pyx_RefNannySetupContext("reset", 0);
 
-  /* "net.pyx":36
+  /* "ErPredprey.pyx":33
  * 
- *     def resetNet(self):
- *         self.c_net.resetNet()             # <<<<<<<<<<<<<<
+ *     def reset(self):
+ *         self.cproblem.reset()             # <<<<<<<<<<<<<<
  * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):
+ *     def step(self):
  */
-  __pyx_v_self->c_net.resetNet();
+  __pyx_v_self->cproblem.reset();
 
-  /* "net.pyx":35
- *         self.c_net.seed(s)
+  /* "ErPredprey.pyx":32
+ *         self.cproblem.seed(s)
  * 
- *     def resetNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNet()
+ *     def reset(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.reset()
  * 
  */
 
@@ -3864,809 +3310,24 @@ static PyObject *__pyx_pf_3net_8PyEvonet_6resetNet(struct __pyx_obj_3net_PyEvone
   return __pyx_r;
 }
 
-/* "net.pyx":38
- *         self.c_net.resetNet()
+/* "ErPredprey.pyx":35
+ *         self.cproblem.reset()
  * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyGenotype(&geno[0])
+ *     def step(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.step()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_9copyGenotype(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_7step(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_9copyGenotype = {"copyGenotype", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_9copyGenotype, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_9copyGenotype(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_geno = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copyGenotype (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_geno,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_geno,0};
-    #endif
-    PyObject* values[1] = {0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_geno)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyGenotype") < 0)) __PYX_ERR(1, 38, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_geno = ((PyArrayObject *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("copyGenotype", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 38, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.copyGenotype", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_geno), __pyx_ptype_5numpy_ndarray, 0, "geno", 0))) __PYX_ERR(1, 38, __pyx_L1_error)
-  __pyx_r = __pyx_pf_3net_8PyEvonet_8copyGenotype(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_geno);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_8copyGenotype(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_geno) {
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_geno;
-  __Pyx_Buffer __pyx_pybuffer_geno;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("copyGenotype", 0);
-  __pyx_pybuffer_geno.pybuffer.buf = NULL;
-  __pyx_pybuffer_geno.refcount = 0;
-  __pyx_pybuffernd_geno.data = NULL;
-  __pyx_pybuffernd_geno.rcbuffer = &__pyx_pybuffer_geno;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_geno.rcbuffer->pybuffer, (PyObject*)__pyx_v_geno, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 38, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_geno.diminfo[0].strides = __pyx_pybuffernd_geno.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_geno.diminfo[0].shape = __pyx_pybuffernd_geno.rcbuffer->pybuffer.shape[0];
-
-  /* "net.pyx":39
- * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):
- *         self.c_net.copyGenotype(&geno[0])             # <<<<<<<<<<<<<<
- * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):
- */
-  __pyx_t_1 = 0;
-  __pyx_t_2 = -1;
-  if (__pyx_t_1 < 0) {
-    __pyx_t_1 += __pyx_pybuffernd_geno.diminfo[0].shape;
-    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
-  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_geno.diminfo[0].shape)) __pyx_t_2 = 0;
-  if (unlikely(__pyx_t_2 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(1, 39, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net.copyGenotype((&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_geno.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_geno.diminfo[0].strides))));
-
-  /* "net.pyx":38
- *         self.c_net.resetNet()
- * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyGenotype(&geno[0])
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_geno.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("net.PyEvonet.copyGenotype", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_geno.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":41
- *         self.c_net.copyGenotype(&geno[0])
- * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyInput(&inp[0])
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_11copyInput(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_11copyInput = {"copyInput", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_11copyInput, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_11copyInput(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_inp = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copyInput (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_inp,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_inp,0};
-    #endif
-    PyObject* values[1] = {0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_inp)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 41, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyInput") < 0)) __PYX_ERR(1, 41, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_inp = ((PyArrayObject *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("copyInput", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 41, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.copyInput", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inp), __pyx_ptype_5numpy_ndarray, 0, "inp", 0))) __PYX_ERR(1, 41, __pyx_L1_error)
-  __pyx_r = __pyx_pf_3net_8PyEvonet_10copyInput(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_inp);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_10copyInput(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_inp) {
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_inp;
-  __Pyx_Buffer __pyx_pybuffer_inp;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("copyInput", 0);
-  __pyx_pybuffer_inp.pybuffer.buf = NULL;
-  __pyx_pybuffer_inp.refcount = 0;
-  __pyx_pybuffernd_inp.data = NULL;
-  __pyx_pybuffernd_inp.rcbuffer = &__pyx_pybuffer_inp;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_inp.rcbuffer->pybuffer, (PyObject*)__pyx_v_inp, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 41, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_inp.diminfo[0].strides = __pyx_pybuffernd_inp.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_inp.diminfo[0].shape = __pyx_pybuffernd_inp.rcbuffer->pybuffer.shape[0];
-
-  /* "net.pyx":42
- * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):
- *         self.c_net.copyInput(&inp[0])             # <<<<<<<<<<<<<<
- * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):
- */
-  __pyx_t_1 = 0;
-  __pyx_t_2 = -1;
-  if (__pyx_t_1 < 0) {
-    __pyx_t_1 += __pyx_pybuffernd_inp.diminfo[0].shape;
-    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
-  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_inp.diminfo[0].shape)) __pyx_t_2 = 0;
-  if (unlikely(__pyx_t_2 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(1, 42, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net.copyInput((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_inp.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_inp.diminfo[0].strides))));
-
-  /* "net.pyx":41
- *         self.c_net.copyGenotype(&geno[0])
- * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyInput(&inp[0])
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_inp.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("net.PyEvonet.copyInput", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_inp.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":44
- *         self.c_net.copyInput(&inp[0])
- * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyOutput(&outp[0])
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_13copyOutput(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_13copyOutput = {"copyOutput", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_13copyOutput, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_13copyOutput(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_outp = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copyOutput (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_outp,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_outp,0};
-    #endif
-    PyObject* values[1] = {0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_outp)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 44, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyOutput") < 0)) __PYX_ERR(1, 44, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_outp = ((PyArrayObject *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("copyOutput", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 44, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.copyOutput", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_outp), __pyx_ptype_5numpy_ndarray, 0, "outp", 0))) __PYX_ERR(1, 44, __pyx_L1_error)
-  __pyx_r = __pyx_pf_3net_8PyEvonet_12copyOutput(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_outp);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_12copyOutput(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_outp) {
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_outp;
-  __Pyx_Buffer __pyx_pybuffer_outp;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("copyOutput", 0);
-  __pyx_pybuffer_outp.pybuffer.buf = NULL;
-  __pyx_pybuffer_outp.refcount = 0;
-  __pyx_pybuffernd_outp.data = NULL;
-  __pyx_pybuffernd_outp.rcbuffer = &__pyx_pybuffer_outp;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_outp.rcbuffer->pybuffer, (PyObject*)__pyx_v_outp, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 44, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_outp.diminfo[0].strides = __pyx_pybuffernd_outp.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_outp.diminfo[0].shape = __pyx_pybuffernd_outp.rcbuffer->pybuffer.shape[0];
-
-  /* "net.pyx":45
- * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):
- *         self.c_net.copyOutput(&outp[0])             # <<<<<<<<<<<<<<
- * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):
- */
-  __pyx_t_1 = 0;
-  __pyx_t_2 = -1;
-  if (__pyx_t_1 < 0) {
-    __pyx_t_1 += __pyx_pybuffernd_outp.diminfo[0].shape;
-    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
-  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_outp.diminfo[0].shape)) __pyx_t_2 = 0;
-  if (unlikely(__pyx_t_2 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(1, 45, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net.copyOutput((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_outp.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_outp.diminfo[0].strides))));
-
-  /* "net.pyx":44
- *         self.c_net.copyInput(&inp[0])
- * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyOutput(&outp[0])
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_outp.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("net.PyEvonet.copyOutput", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_outp.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":47
- *         self.c_net.copyOutput(&outp[0])
- * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNeuronact(&na[0])
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_15copyNeuronact(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_15copyNeuronact = {"copyNeuronact", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_15copyNeuronact, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_15copyNeuronact(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_na = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copyNeuronact (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_na,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_na,0};
-    #endif
-    PyObject* values[1] = {0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_na)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 47, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyNeuronact") < 0)) __PYX_ERR(1, 47, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_na = ((PyArrayObject *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("copyNeuronact", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 47, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.copyNeuronact", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_na), __pyx_ptype_5numpy_ndarray, 0, "na", 0))) __PYX_ERR(1, 47, __pyx_L1_error)
-  __pyx_r = __pyx_pf_3net_8PyEvonet_14copyNeuronact(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_na);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_14copyNeuronact(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_na) {
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_na;
-  __Pyx_Buffer __pyx_pybuffer_na;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("copyNeuronact", 0);
-  __pyx_pybuffer_na.pybuffer.buf = NULL;
-  __pyx_pybuffer_na.refcount = 0;
-  __pyx_pybuffernd_na.data = NULL;
-  __pyx_pybuffernd_na.rcbuffer = &__pyx_pybuffer_na;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_na.rcbuffer->pybuffer, (PyObject*)__pyx_v_na, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 47, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_na.diminfo[0].strides = __pyx_pybuffernd_na.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_na.diminfo[0].shape = __pyx_pybuffernd_na.rcbuffer->pybuffer.shape[0];
-
-  /* "net.pyx":48
- * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):
- *         self.c_net.copyNeuronact(&na[0])             # <<<<<<<<<<<<<<
- * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):
- */
-  __pyx_t_1 = 0;
-  __pyx_t_2 = -1;
-  if (__pyx_t_1 < 0) {
-    __pyx_t_1 += __pyx_pybuffernd_na.diminfo[0].shape;
-    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
-  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_na.diminfo[0].shape)) __pyx_t_2 = 0;
-  if (unlikely(__pyx_t_2 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(1, 48, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net.copyNeuronact((&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_na.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_na.diminfo[0].strides))));
-
-  /* "net.pyx":47
- *         self.c_net.copyOutput(&outp[0])
- * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNeuronact(&na[0])
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_na.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("net.PyEvonet.copyNeuronact", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_na.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":50
- *         self.c_net.copyNeuronact(&na[0])
- * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNormalization(&no[0])
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_17copyNormalization(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_17copyNormalization = {"copyNormalization", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_17copyNormalization, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_17copyNormalization(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyArrayObject *__pyx_v_no = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("copyNormalization (wrapper)", 0);
-  {
-    #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_no,0};
-    #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_no,0};
-    #endif
-    PyObject* values[1] = {0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_no)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 50, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyNormalization") < 0)) __PYX_ERR(1, 50, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_no = ((PyArrayObject *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("copyNormalization", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 50, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.copyNormalization", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_no), __pyx_ptype_5numpy_ndarray, 0, "no", 0))) __PYX_ERR(1, 50, __pyx_L1_error)
-  __pyx_r = __pyx_pf_3net_8PyEvonet_16copyNormalization(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_no);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_16copyNormalization(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, PyArrayObject *__pyx_v_no) {
-  __Pyx_LocalBuf_ND __pyx_pybuffernd_no;
-  __Pyx_Buffer __pyx_pybuffer_no;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
-  int __pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("copyNormalization", 0);
-  __pyx_pybuffer_no.pybuffer.buf = NULL;
-  __pyx_pybuffer_no.refcount = 0;
-  __pyx_pybuffernd_no.data = NULL;
-  __pyx_pybuffernd_no.rcbuffer = &__pyx_pybuffer_no;
-  {
-    __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_no.rcbuffer->pybuffer, (PyObject*)__pyx_v_no, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 50, __pyx_L1_error)
-  }
-  __pyx_pybuffernd_no.diminfo[0].strides = __pyx_pybuffernd_no.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_no.diminfo[0].shape = __pyx_pybuffernd_no.rcbuffer->pybuffer.shape[0];
-
-  /* "net.pyx":51
- * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):
- *         self.c_net.copyNormalization(&no[0])             # <<<<<<<<<<<<<<
- * 
- *     def updateNet(self):
- */
-  __pyx_t_1 = 0;
-  __pyx_t_2 = -1;
-  if (__pyx_t_1 < 0) {
-    __pyx_t_1 += __pyx_pybuffernd_no.diminfo[0].shape;
-    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
-  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_no.diminfo[0].shape)) __pyx_t_2 = 0;
-  if (unlikely(__pyx_t_2 != -1)) {
-    __Pyx_RaiseBufferIndexError(__pyx_t_2);
-    __PYX_ERR(1, 51, __pyx_L1_error)
-  }
-  __pyx_v_self->c_net.copyNormalization((&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_no.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_no.diminfo[0].strides))));
-
-  /* "net.pyx":50
- *         self.c_net.copyNeuronact(&na[0])
- * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNormalization(&no[0])
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
-    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_no.rcbuffer->pybuffer);
-  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("net.PyEvonet.copyNormalization", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  goto __pyx_L2;
-  __pyx_L0:;
-  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_no.rcbuffer->pybuffer);
-  __pyx_L2:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":53
- *         self.c_net.copyNormalization(&no[0])
- * 
- *     def updateNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNet()
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_19updateNet(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_19updateNet = {"updateNet", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_19updateNet, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_19updateNet(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_7step = {"step", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_7step, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_7step(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4679,122 +3340,52 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("updateNet (wrapper)", 0);
+  __Pyx_RefNannySetupContext("step (wrapper)", 0);
   if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("updateNet", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "updateNet", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_18updateNet(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+    __Pyx_RaiseArgtupleInvalid("step", 1, 0, 0, __pyx_nargs); return NULL;}
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "step", 0))) return NULL;
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_6step(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_18updateNet(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("updateNet", 0);
-
-  /* "net.pyx":54
- * 
- *     def updateNet(self):
- *         self.c_net.updateNet()             # <<<<<<<<<<<<<<
- * 
- *     def computeParameters(self):
- */
-  __pyx_v_self->c_net.updateNet();
-
-  /* "net.pyx":53
- *         self.c_net.copyNormalization(&no[0])
- * 
- *     def updateNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNet()
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":56
- *         self.c_net.updateNet()
- * 
- *     def computeParameters(self):             # <<<<<<<<<<<<<<
- *         return self.c_net.computeParameters()
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_21computeParameters(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_21computeParameters = {"computeParameters", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_21computeParameters, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_21computeParameters(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("computeParameters (wrapper)", 0);
-  if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("computeParameters", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "computeParameters", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_20computeParameters(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_20computeParameters(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_6step(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("computeParameters", 0);
+  __Pyx_RefNannySetupContext("step", 0);
 
-  /* "net.pyx":57
+  /* "ErPredprey.pyx":36
  * 
- *     def computeParameters(self):
- *         return self.c_net.computeParameters()             # <<<<<<<<<<<<<<
+ *     def step(self):
+ *         return self.cproblem.step()             # <<<<<<<<<<<<<<
  * 
- *     def initWeights(self):
+ *     def close(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_net.computeParameters()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->cproblem.step()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "net.pyx":56
- *         self.c_net.updateNet()
+  /* "ErPredprey.pyx":35
+ *         self.cproblem.reset()
  * 
- *     def computeParameters(self):             # <<<<<<<<<<<<<<
- *         return self.c_net.computeParameters()
+ *     def step(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.step()
  * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("net.PyEvonet.computeParameters", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4802,24 +3393,24 @@ static PyObject *__pyx_pf_3net_8PyEvonet_20computeParameters(struct __pyx_obj_3n
   return __pyx_r;
 }
 
-/* "net.pyx":59
- *         return self.c_net.computeParameters()
+/* "ErPredprey.pyx":38
+ *         return self.cproblem.step()
  * 
- *     def initWeights(self):             # <<<<<<<<<<<<<<
- *         self.c_net.initWeights()
+ *     def close(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.close()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_23initWeights(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_9close(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_23initWeights = {"initWeights", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_23initWeights, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_23initWeights(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_9close = {"close", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_9close(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4832,36 +3423,36 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("initWeights (wrapper)", 0);
+  __Pyx_RefNannySetupContext("close (wrapper)", 0);
   if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("initWeights", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "initWeights", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_22initWeights(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+    __Pyx_RaiseArgtupleInvalid("close", 1, 0, 0, __pyx_nargs); return NULL;}
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "close", 0))) return NULL;
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_8close(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_22initWeights(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_8close(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("initWeights", 0);
+  __Pyx_RefNannySetupContext("close", 0);
 
-  /* "net.pyx":60
+  /* "ErPredprey.pyx":39
  * 
- *     def initWeights(self):
- *         self.c_net.initWeights()             # <<<<<<<<<<<<<<
+ *     def close(self):
+ *         self.cproblem.close()             # <<<<<<<<<<<<<<
  * 
- *     def normphase(self, int phase):
+ *     def render(self):
  */
-  __pyx_v_self->c_net.initWeights();
+  __pyx_v_self->cproblem.close();
 
-  /* "net.pyx":59
- *         return self.c_net.computeParameters()
+  /* "ErPredprey.pyx":38
+ *         return self.cproblem.step()
  * 
- *     def initWeights(self):             # <<<<<<<<<<<<<<
- *         self.c_net.initWeights()
+ *     def close(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.close()
  * 
  */
 
@@ -4872,31 +3463,101 @@ static PyObject *__pyx_pf_3net_8PyEvonet_22initWeights(struct __pyx_obj_3net_PyE
   return __pyx_r;
 }
 
-/* "net.pyx":62
- *         self.c_net.initWeights()
+/* "ErPredprey.pyx":41
+ *         self.cproblem.close()
  * 
- *     def normphase(self, int phase):             # <<<<<<<<<<<<<<
- *         self.c_net.normphase(phase)
+ *     def render(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.render()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_25normphase(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_11render(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_25normphase = {"normphase", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_25normphase, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_25normphase(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_11render = {"render", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_11render, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_11render(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  int __pyx_v_phase;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("render (wrapper)", 0);
+  if (unlikely(__pyx_nargs > 0)) {
+    __Pyx_RaiseArgtupleInvalid("render", 1, 0, 0, __pyx_nargs); return NULL;}
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "render", 0))) return NULL;
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_10render(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_10render(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("render", 0);
+
+  /* "ErPredprey.pyx":42
+ * 
+ *     def render(self):
+ *         self.cproblem.render()             # <<<<<<<<<<<<<<
+ * 
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):
+ */
+  __pyx_v_self->cproblem.render();
+
+  /* "ErPredprey.pyx":41
+ *         self.cproblem.close()
+ * 
+ *     def render(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.render()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":44
+ *         self.cproblem.render()
+ * 
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyObs(&obs[0])
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_13copyObs(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_13copyObs = {"copyObs", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_13copyObs, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_13copyObs(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_obs = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   #endif
@@ -4906,12 +3567,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("normphase (wrapper)", 0);
+  __Pyx_RefNannySetupContext("copyObs (wrapper)", 0);
   {
     #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_phase,0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_obs,0};
     #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_phase,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_obs,0};
     #endif
     PyObject* values[1] = {0};
     if (__pyx_kwds) {
@@ -4925,83 +3586,599 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
       switch (__pyx_nargs) {
         case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_phase)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 62, __pyx_L3_error)
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_obs)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 44, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "normphase") < 0)) __PYX_ERR(1, 62, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyObs") < 0)) __PYX_ERR(1, 44, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_phase = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_phase == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 62, __pyx_L3_error)
+    __pyx_v_obs = ((PyArrayObject *)values[0]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("normphase", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 62, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("copyObs", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 44, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.normphase", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyObs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_24normphase(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v_phase);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_obs), __pyx_ptype_5numpy_ndarray, 0, "obs", 0))) __PYX_ERR(1, 44, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_12copyObs(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v_obs);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_24normphase(struct __pyx_obj_3net_PyEvonet *__pyx_v_self, int __pyx_v_phase) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_12copyObs(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_obs) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_obs;
+  __Pyx_Buffer __pyx_pybuffer_obs;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("normphase", 0);
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("copyObs", 0);
+  __pyx_pybuffer_obs.pybuffer.buf = NULL;
+  __pyx_pybuffer_obs.refcount = 0;
+  __pyx_pybuffernd_obs.data = NULL;
+  __pyx_pybuffernd_obs.rcbuffer = &__pyx_pybuffer_obs;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_obs.rcbuffer->pybuffer, (PyObject*)__pyx_v_obs, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 44, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_obs.diminfo[0].strides = __pyx_pybuffernd_obs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_obs.diminfo[0].shape = __pyx_pybuffernd_obs.rcbuffer->pybuffer.shape[0];
 
-  /* "net.pyx":63
+  /* "ErPredprey.pyx":45
  * 
- *     def normphase(self, int phase):
- *         self.c_net.normphase(phase)             # <<<<<<<<<<<<<<
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):
+ *         self.cproblem.copyObs(&obs[0])             # <<<<<<<<<<<<<<
  * 
- *     def updateNormalizationVectors(self):
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):
  */
-  __pyx_v_self->c_net.normphase(__pyx_v_phase);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_pybuffernd_obs.diminfo[0].shape;
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_obs.diminfo[0].shape)) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __PYX_ERR(1, 45, __pyx_L1_error)
+  }
+  __pyx_v_self->cproblem.copyObs((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_obs.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_obs.diminfo[0].strides))));
 
-  /* "net.pyx":62
- *         self.c_net.initWeights()
+  /* "ErPredprey.pyx":44
+ *         self.cproblem.render()
  * 
- *     def normphase(self, int phase):             # <<<<<<<<<<<<<<
- *         self.c_net.normphase(phase)
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyObs(&obs[0])
  * 
  */
 
   /* function exit code */
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_obs.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyObs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_obs.rcbuffer->pybuffer);
+  __pyx_L2:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "net.pyx":65
- *         self.c_net.normphase(phase)
+/* "ErPredprey.pyx":47
+ *         self.cproblem.copyObs(&obs[0])
  * 
- *     def updateNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNormalizationVectors()
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyAct(&act[0])
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_27updateNormalizationVectors(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_15copyAct(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_27updateNormalizationVectors = {"updateNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_27updateNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_27updateNormalizationVectors(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_15copyAct = {"copyAct", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_15copyAct, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_15copyAct(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_act = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("copyAct (wrapper)", 0);
+  {
+    #if CYTHON_USE_MODULE_STATE
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_act,0};
+    #else
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_act,0};
+    #endif
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_act)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 47, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyAct") < 0)) __PYX_ERR(1, 47, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_act = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("copyAct", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 47, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyAct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_act), __pyx_ptype_5numpy_ndarray, 0, "act", 0))) __PYX_ERR(1, 47, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_14copyAct(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v_act);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_14copyAct(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_act) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_act;
+  __Pyx_Buffer __pyx_pybuffer_act;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("copyAct", 0);
+  __pyx_pybuffer_act.pybuffer.buf = NULL;
+  __pyx_pybuffer_act.refcount = 0;
+  __pyx_pybuffernd_act.data = NULL;
+  __pyx_pybuffernd_act.rcbuffer = &__pyx_pybuffer_act;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_act.rcbuffer->pybuffer, (PyObject*)__pyx_v_act, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 47, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_act.diminfo[0].strides = __pyx_pybuffernd_act.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_act.diminfo[0].shape = __pyx_pybuffernd_act.rcbuffer->pybuffer.shape[0];
+
+  /* "ErPredprey.pyx":48
+ * 
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):
+ *         self.cproblem.copyAct(&act[0])             # <<<<<<<<<<<<<<
+ * 
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):
+ */
+  __pyx_t_1 = 0;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_pybuffernd_act.diminfo[0].shape;
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_act.diminfo[0].shape)) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __PYX_ERR(1, 48, __pyx_L1_error)
+  }
+  __pyx_v_self->cproblem.copyAct((&(*__Pyx_BufPtrCContig1d(float *, __pyx_pybuffernd_act.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_act.diminfo[0].strides))));
+
+  /* "ErPredprey.pyx":47
+ *         self.cproblem.copyObs(&obs[0])
+ * 
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyAct(&act[0])
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_act.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyAct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_act.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":50
+ *         self.cproblem.copyAct(&act[0])
+ * 
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDone(&done[0])
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_17copyDone(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_17copyDone = {"copyDone", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_17copyDone, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_17copyDone(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_done = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("copyDone (wrapper)", 0);
+  {
+    #if CYTHON_USE_MODULE_STATE
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_done,0};
+    #else
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_done,0};
+    #endif
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_done)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 50, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyDone") < 0)) __PYX_ERR(1, 50, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_done = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("copyDone", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 50, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyDone", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_done), __pyx_ptype_5numpy_ndarray, 0, "done", 0))) __PYX_ERR(1, 50, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_16copyDone(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v_done);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_16copyDone(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_done) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_done;
+  __Pyx_Buffer __pyx_pybuffer_done;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("copyDone", 0);
+  __pyx_pybuffer_done.pybuffer.buf = NULL;
+  __pyx_pybuffer_done.refcount = 0;
+  __pyx_pybuffernd_done.data = NULL;
+  __pyx_pybuffernd_done.rcbuffer = &__pyx_pybuffer_done;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_done.rcbuffer->pybuffer, (PyObject*)__pyx_v_done, &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 50, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_done.diminfo[0].strides = __pyx_pybuffernd_done.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_done.diminfo[0].shape = __pyx_pybuffernd_done.rcbuffer->pybuffer.shape[0];
+
+  /* "ErPredprey.pyx":51
+ * 
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):
+ *         self.cproblem.copyDone(&done[0])             # <<<<<<<<<<<<<<
+ * 
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):
+ */
+  __pyx_t_1 = 0;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_pybuffernd_done.diminfo[0].shape;
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_done.diminfo[0].shape)) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __PYX_ERR(1, 51, __pyx_L1_error)
+  }
+  __pyx_v_self->cproblem.copyDone((&(*__Pyx_BufPtrCContig1d(int *, __pyx_pybuffernd_done.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_done.diminfo[0].strides))));
+
+  /* "ErPredprey.pyx":50
+ *         self.cproblem.copyAct(&act[0])
+ * 
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDone(&done[0])
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_done.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyDone", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_done.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":53
+ *         self.cproblem.copyDone(&done[0])
+ * 
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDobj(&dob[0])
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_19copyDobj(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_19copyDobj = {"copyDobj", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_19copyDobj, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_19copyDobj(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyArrayObject *__pyx_v_dob = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("copyDobj (wrapper)", 0);
+  {
+    #if CYTHON_USE_MODULE_STATE
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_dob,0};
+    #else
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_dob,0};
+    #endif
+    PyObject* values[1] = {0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dob)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 53, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "copyDobj") < 0)) __PYX_ERR(1, 53, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_dob = ((PyArrayObject *)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("copyDobj", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 53, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyDobj", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dob), __pyx_ptype_5numpy_ndarray, 0, "dob", 0))) __PYX_ERR(1, 53, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_18copyDobj(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v_dob);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_18copyDobj(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyArrayObject *__pyx_v_dob) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_dob;
+  __Pyx_Buffer __pyx_pybuffer_dob;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("copyDobj", 0);
+  __pyx_pybuffer_dob.pybuffer.buf = NULL;
+  __pyx_pybuffer_dob.refcount = 0;
+  __pyx_pybuffernd_dob.data = NULL;
+  __pyx_pybuffernd_dob.rcbuffer = &__pyx_pybuffer_dob;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_dob.rcbuffer->pybuffer, (PyObject*)__pyx_v_dob, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 53, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_dob.diminfo[0].strides = __pyx_pybuffernd_dob.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_dob.diminfo[0].shape = __pyx_pybuffernd_dob.rcbuffer->pybuffer.shape[0];
+
+  /* "ErPredprey.pyx":54
+ * 
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):
+ *         self.cproblem.copyDobj(&dob[0])             # <<<<<<<<<<<<<<
+ * 
+ *     def isDone(self):
+ */
+  __pyx_t_1 = 0;
+  __pyx_t_2 = -1;
+  if (__pyx_t_1 < 0) {
+    __pyx_t_1 += __pyx_pybuffernd_dob.diminfo[0].shape;
+    if (unlikely(__pyx_t_1 < 0)) __pyx_t_2 = 0;
+  } else if (unlikely(__pyx_t_1 >= __pyx_pybuffernd_dob.diminfo[0].shape)) __pyx_t_2 = 0;
+  if (unlikely(__pyx_t_2 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __PYX_ERR(1, 54, __pyx_L1_error)
+  }
+  __pyx_v_self->cproblem.copyDobj((&(*__Pyx_BufPtrCContig1d(double *, __pyx_pybuffernd_dob.rcbuffer->pybuffer.buf, __pyx_t_1, __pyx_pybuffernd_dob.diminfo[0].strides))));
+
+  /* "ErPredprey.pyx":53
+ *         self.cproblem.copyDone(&done[0])
+ * 
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDobj(&dob[0])
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_dob.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.copyDobj", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_dob.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":56
+ *         self.cproblem.copyDobj(&dob[0])
+ * 
+ *     def isDone(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.isDone()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_21isDone(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_21isDone = {"isDone", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_21isDone, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_21isDone(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5014,251 +4191,408 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("updateNormalizationVectors (wrapper)", 0);
+  __Pyx_RefNannySetupContext("isDone (wrapper)", 0);
   if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("updateNormalizationVectors", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "updateNormalizationVectors", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_26updateNormalizationVectors(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+    __Pyx_RaiseArgtupleInvalid("isDone", 1, 0, 0, __pyx_nargs); return NULL;}
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "isDone", 0))) return NULL;
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_20isDone(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_26updateNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_20isDone(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("updateNormalizationVectors", 0);
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("isDone", 0);
 
-  /* "net.pyx":66
+  /* "ErPredprey.pyx":57
  * 
- *     def updateNormalizationVectors(self):
- *         self.c_net.updateNormalizationVectors()             # <<<<<<<<<<<<<<
- * 
- *     def setNormalizationVectors(self):
- */
-  __pyx_v_self->c_net.updateNormalizationVectors();
-
-  /* "net.pyx":65
- *         self.c_net.normphase(phase)
- * 
- *     def updateNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNormalizationVectors()
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":68
- *         self.c_net.updateNormalizationVectors()
- * 
- *     def setNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.setNormalizationVectors()
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_29setNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_29setNormalizationVectors = {"setNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_29setNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_29setNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("setNormalizationVectors (wrapper)", 0);
-  if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("setNormalizationVectors", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "setNormalizationVectors", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_28setNormalizationVectors(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_28setNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("setNormalizationVectors", 0);
-
-  /* "net.pyx":69
- * 
- *     def setNormalizationVectors(self):
- *         self.c_net.setNormalizationVectors()             # <<<<<<<<<<<<<<
- * 
- *     def getNormalizationVectors(self):
- */
-  __pyx_v_self->c_net.setNormalizationVectors();
-
-  /* "net.pyx":68
- *         self.c_net.updateNormalizationVectors()
- * 
- *     def setNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.setNormalizationVectors()
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":71
- *         self.c_net.setNormalizationVectors()
- * 
- *     def getNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.getNormalizationVectors()
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_31getNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_31getNormalizationVectors = {"getNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_31getNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_31getNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("getNormalizationVectors (wrapper)", 0);
-  if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("getNormalizationVectors", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "getNormalizationVectors", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_30getNormalizationVectors(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_30getNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("getNormalizationVectors", 0);
-
-  /* "net.pyx":72
- * 
- *     def getNormalizationVectors(self):
- *         self.c_net.getNormalizationVectors()             # <<<<<<<<<<<<<<
- * 
- *     def resetNormalizationVectors(self):
- */
-  __pyx_v_self->c_net.getNormalizationVectors();
-
-  /* "net.pyx":71
- *         self.c_net.setNormalizationVectors()
- * 
- *     def getNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.getNormalizationVectors()
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "net.pyx":74
- *         self.c_net.getNormalizationVectors()
- * 
- *     def resetNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNormalizationVectors()
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_33resetNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_33resetNormalizationVectors = {"resetNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_33resetNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_33resetNormalizationVectors(PyObject *__pyx_v_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("resetNormalizationVectors (wrapper)", 0);
-  if (unlikely(__pyx_nargs > 0)) {
-    __Pyx_RaiseArgtupleInvalid("resetNormalizationVectors", 1, 0, 0, __pyx_nargs); return NULL;}
-  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "resetNormalizationVectors", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_32resetNormalizationVectors(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3net_8PyEvonet_32resetNormalizationVectors(struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("resetNormalizationVectors", 0);
-
-  /* "net.pyx":75
- * 
- *     def resetNormalizationVectors(self):
- *         self.c_net.resetNormalizationVectors()             # <<<<<<<<<<<<<<
+ *     def isDone(self):
+ *         return self.cproblem.isDone()             # <<<<<<<<<<<<<<
  * 
  *     # Attribute access
  */
-  __pyx_v_self->c_net.resetNormalizationVectors();
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->cproblem.isDone()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
 
-  /* "net.pyx":74
- *         self.c_net.getNormalizationVectors()
+  /* "ErPredprey.pyx":56
+ *         self.cproblem.copyDobj(&dob[0])
  * 
- *     def resetNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNormalizationVectors()
+ *     def isDone(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.isDone()
  * 
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.isDone", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":60
+ * 
+ *     # Attribute access
+ *     @property             # <<<<<<<<<<<<<<
+ *     def ninputs(self):
+ *         return self.cproblem.ninputs
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_7ninputs_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_7ninputs_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_7ninputs___get__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_7ninputs___get__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "ErPredprey.pyx":62
+ *     @property
+ *     def ninputs(self):
+ *         return self.cproblem.ninputs             # <<<<<<<<<<<<<<
+ *     @ninputs.setter
+ *     def ninputs(self, ninputs):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->cproblem.ninputs); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "ErPredprey.pyx":60
+ * 
+ *     # Attribute access
+ *     @property             # <<<<<<<<<<<<<<
+ *     def ninputs(self):
+ *         return self.cproblem.ninputs
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.ninputs.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":63
+ *     def ninputs(self):
+ *         return self.cproblem.ninputs
+ *     @ninputs.setter             # <<<<<<<<<<<<<<
+ *     def ninputs(self, ninputs):
+ *         self.cproblem.ninputs = ninputs
+ */
+
+/* Python wrapper */
+static int __pyx_pw_10ErPredprey_11PyErProblem_7ninputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_ninputs); /*proto*/
+static int __pyx_pw_10ErPredprey_11PyErProblem_7ninputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_ninputs) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_7ninputs_2__set__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), ((PyObject *)__pyx_v_ninputs));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_10ErPredprey_11PyErProblem_7ninputs_2__set__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyObject *__pyx_v_ninputs) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__set__", 0);
+
+  /* "ErPredprey.pyx":65
+ *     @ninputs.setter
+ *     def ninputs(self, ninputs):
+ *         self.cproblem.ninputs = ninputs             # <<<<<<<<<<<<<<
+ *     @property
+ *     def noutputs(self):
+ */
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_ninputs); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 65, __pyx_L1_error)
+  __pyx_v_self->cproblem.ninputs = __pyx_t_1;
+
+  /* "ErPredprey.pyx":63
+ *     def ninputs(self):
+ *         return self.cproblem.ninputs
+ *     @ninputs.setter             # <<<<<<<<<<<<<<
+ *     def ninputs(self, ninputs):
+ *         self.cproblem.ninputs = ninputs
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.ninputs.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":66
+ *     def ninputs(self, ninputs):
+ *         self.cproblem.ninputs = ninputs
+ *     @property             # <<<<<<<<<<<<<<
+ *     def noutputs(self):
+ *         return self.cproblem.noutputs
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_8noutputs_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_8noutputs_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_8noutputs___get__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_8noutputs___get__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "ErPredprey.pyx":68
+ *     @property
+ *     def noutputs(self):
+ *         return self.cproblem.noutputs             # <<<<<<<<<<<<<<
+ *     @noutputs.setter
+ *     def noutputs(self, noutputs):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->cproblem.noutputs); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 68, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "ErPredprey.pyx":66
+ *     def ninputs(self, ninputs):
+ *         self.cproblem.ninputs = ninputs
+ *     @property             # <<<<<<<<<<<<<<
+ *     def noutputs(self):
+ *         return self.cproblem.noutputs
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.noutputs.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":69
+ *     def noutputs(self):
+ *         return self.cproblem.noutputs
+ *     @noutputs.setter             # <<<<<<<<<<<<<<
+ *     def noutputs(self, noutputs):
+ *         self.cproblem.noutputs = noutputs
+ */
+
+/* Python wrapper */
+static int __pyx_pw_10ErPredprey_11PyErProblem_8noutputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_noutputs); /*proto*/
+static int __pyx_pw_10ErPredprey_11PyErProblem_8noutputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_noutputs) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_8noutputs_2__set__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), ((PyObject *)__pyx_v_noutputs));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_10ErPredprey_11PyErProblem_8noutputs_2__set__(struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, PyObject *__pyx_v_noutputs) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__set__", 0);
+
+  /* "ErPredprey.pyx":71
+ *     @noutputs.setter
+ *     def noutputs(self, noutputs):
+ *         self.cproblem.noutputs = noutputs             # <<<<<<<<<<<<<<
+ * 
+ *     # Maximum value for action
+ */
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_noutputs); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 71, __pyx_L1_error)
+  __pyx_v_self->cproblem.noutputs = __pyx_t_1;
+
+  /* "ErPredprey.pyx":69
+ *     def noutputs(self):
+ *         return self.cproblem.noutputs
+ *     @noutputs.setter             # <<<<<<<<<<<<<<
+ *     def noutputs(self, noutputs):
+ *         self.cproblem.noutputs = noutputs
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.noutputs.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":74
+ * 
+ *     # Maximum value for action
+ *     @property             # <<<<<<<<<<<<<<
+ *     def high(self):
+ *         return 1.0
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_4high_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_4high_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_4high___get__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_4high___get__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "ErPredprey.pyx":76
+ *     @property
+ *     def high(self):
+ *         return 1.0             # <<<<<<<<<<<<<<
+ * 
+ *     # Minimum value for action
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_float_1_0);
+  __pyx_r = __pyx_float_1_0;
+  goto __pyx_L0;
+
+  /* "ErPredprey.pyx":74
+ * 
+ *     # Maximum value for action
+ *     @property             # <<<<<<<<<<<<<<
+ *     def high(self):
+ *         return 1.0
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ErPredprey.pyx":79
+ * 
+ *     # Minimum value for action
+ *     @property             # <<<<<<<<<<<<<<
+ *     def low(self):
+ *         return -1.0
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_3low_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_3low_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_3low___get__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_3low___get__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "ErPredprey.pyx":81
+ *     @property
+ *     def low(self):
+ *         return -1.0             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_float_neg_1_0);
+  __pyx_r = __pyx_float_neg_1_0;
+  goto __pyx_L0;
+
+  /* "ErPredprey.pyx":79
+ * 
+ *     # Minimum value for action
+ *     @property             # <<<<<<<<<<<<<<
+ *     def low(self):
+ *         return -1.0
+ */
+
+  /* function exit code */
+  __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -5271,15 +4605,15 @@ static PyObject *__pyx_pf_3net_8PyEvonet_32resetNormalizationVectors(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_35__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_23__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_35__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_35__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_35__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_23__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_23__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_23__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5296,14 +4630,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_34__reduce_cython__(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_22__reduce_cython__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3net_PyEvonet *__pyx_v_self) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_22__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5328,7 +4662,7 @@ static PyObject *__pyx_pf_3net_8PyEvonet_34__reduce_cython__(CYTHON_UNUSED struc
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -5343,15 +4677,15 @@ static PyObject *__pyx_pf_3net_8PyEvonet_34__reduce_cython__(CYTHON_UNUSED struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3net_8PyEvonet_37__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_25__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3net_8PyEvonet_37__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_37__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3net_8PyEvonet_37__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10ErPredprey_11PyErProblem_25__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_25__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10ErPredprey_11PyErProblem_25__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5406,18 +4740,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__setstate_cython__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 3, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3net_8PyEvonet_36__setstate_cython__(((struct __pyx_obj_3net_PyEvonet *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_10ErPredprey_11PyErProblem_24__setstate_cython__(((struct __pyx_obj_10ErPredprey_PyErProblem *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3net_8PyEvonet_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3net_PyEvonet *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_10ErPredprey_11PyErProblem_24__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10ErPredprey_PyErProblem *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5442,7 +4776,7 @@ static PyObject *__pyx_pf_3net_8PyEvonet_36__setstate_cython__(CYTHON_UNUSED str
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("net.PyEvonet.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ErPredprey.PyErProblem.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -6720,8 +6054,8 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_3net_PyEvonet(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_3net_PyEvonet *p;
+static PyObject *__pyx_tp_new_10ErPredprey_PyErProblem(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_10ErPredprey_PyErProblem *p;
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -6734,70 +6068,110 @@ static PyObject *__pyx_tp_new_3net_PyEvonet(PyTypeObject *t, PyObject *a, PyObje
   }
   if (unlikely(!o)) return 0;
   #endif
-  p = ((struct __pyx_obj_3net_PyEvonet *)o);
-  new((void*)&(p->c_net)) Evonet();
-  if (unlikely(__pyx_pw_3net_8PyEvonet_3__cinit__(o, a, k) < 0)) goto bad;
+  p = ((struct __pyx_obj_10ErPredprey_PyErProblem *)o);
+  new((void*)&(p->cproblem)) Problem();
+  if (unlikely(__pyx_pw_10ErPredprey_11PyErProblem_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_3net_PyEvonet(PyObject *o) {
-  struct __pyx_obj_3net_PyEvonet *p = (struct __pyx_obj_3net_PyEvonet *)o;
+static void __pyx_tp_dealloc_10ErPredprey_PyErProblem(PyObject *o) {
+  struct __pyx_obj_10ErPredprey_PyErProblem *p = (struct __pyx_obj_10ErPredprey_PyErProblem *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3net_PyEvonet) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_10ErPredprey_PyErProblem) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
   #endif
-  __Pyx_call_destructor(p->c_net);
+  __Pyx_call_destructor(p->cproblem);
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_3net_PyEvonet[] = {
-  {"seed", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_5seed, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"resetNet", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_7resetNet, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"copyGenotype", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_9copyGenotype, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"copyInput", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_11copyInput, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"copyOutput", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_13copyOutput, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"copyNeuronact", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_15copyNeuronact, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"copyNormalization", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_17copyNormalization, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"updateNet", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_19updateNet, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"computeParameters", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_21computeParameters, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"initWeights", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_23initWeights, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"normphase", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_25normphase, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"updateNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_27updateNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"setNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_29setNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"getNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_31getNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"resetNormalizationVectors", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_33resetNormalizationVectors, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_35__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3net_8PyEvonet_37__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyObject *__pyx_getprop_10ErPredprey_11PyErProblem_ninputs(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10ErPredprey_11PyErProblem_7ninputs_1__get__(o);
+}
+
+static int __pyx_setprop_10ErPredprey_11PyErProblem_ninputs(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_10ErPredprey_11PyErProblem_7ninputs_3__set__(o, v);
+  }
+  else {
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
+  }
+}
+
+static PyObject *__pyx_getprop_10ErPredprey_11PyErProblem_noutputs(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10ErPredprey_11PyErProblem_8noutputs_1__get__(o);
+}
+
+static int __pyx_setprop_10ErPredprey_11PyErProblem_noutputs(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_10ErPredprey_11PyErProblem_8noutputs_3__set__(o, v);
+  }
+  else {
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
+  }
+}
+
+static PyObject *__pyx_getprop_10ErPredprey_11PyErProblem_high(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10ErPredprey_11PyErProblem_4high_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_10ErPredprey_11PyErProblem_low(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10ErPredprey_11PyErProblem_3low_1__get__(o);
+}
+
+static PyMethodDef __pyx_methods_10ErPredprey_PyErProblem[] = {
+  {"seed", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_3seed, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"reset", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_5reset, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"step", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_7step, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"close", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"render", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_11render, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"copyObs", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_13copyObs, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"copyAct", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_15copyAct, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"copyDone", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_17copyDone, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"copyDobj", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_19copyDobj, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"isDone", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_21isDone, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_23__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10ErPredprey_11PyErProblem_25__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
+
+static struct PyGetSetDef __pyx_getsets_10ErPredprey_PyErProblem[] = {
+  {(char *)"ninputs", __pyx_getprop_10ErPredprey_11PyErProblem_ninputs, __pyx_setprop_10ErPredprey_11PyErProblem_ninputs, (char *)0, 0},
+  {(char *)"noutputs", __pyx_getprop_10ErPredprey_11PyErProblem_noutputs, __pyx_setprop_10ErPredprey_11PyErProblem_noutputs, (char *)0, 0},
+  {(char *)"high", __pyx_getprop_10ErPredprey_11PyErProblem_high, 0, (char *)0, 0},
+  {(char *)"low", __pyx_getprop_10ErPredprey_11PyErProblem_low, 0, (char *)0, 0},
+  {0, 0, 0, 0, 0}
+};
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_3net_PyEvonet_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3net_PyEvonet},
-  {Py_tp_methods, (void *)__pyx_methods_3net_PyEvonet},
-  {Py_tp_new, (void *)__pyx_tp_new_3net_PyEvonet},
+static PyType_Slot __pyx_type_10ErPredprey_PyErProblem_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_10ErPredprey_PyErProblem},
+  {Py_tp_methods, (void *)__pyx_methods_10ErPredprey_PyErProblem},
+  {Py_tp_getset, (void *)__pyx_getsets_10ErPredprey_PyErProblem},
+  {Py_tp_new, (void *)__pyx_tp_new_10ErPredprey_PyErProblem},
   {0, 0},
 };
-static PyType_Spec __pyx_type_3net_PyEvonet_spec = {
-  "net.PyEvonet",
-  sizeof(struct __pyx_obj_3net_PyEvonet),
+static PyType_Spec __pyx_type_10ErPredprey_PyErProblem_spec = {
+  "ErPredprey.PyErProblem",
+  sizeof(struct __pyx_obj_10ErPredprey_PyErProblem),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_3net_PyEvonet_slots,
+  __pyx_type_10ErPredprey_PyErProblem_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_3net_PyEvonet = {
+static PyTypeObject __pyx_type_10ErPredprey_PyErProblem = {
   PyVarObject_HEAD_INIT(0, 0)
-  "net.""PyEvonet", /*tp_name*/
-  sizeof(struct __pyx_obj_3net_PyEvonet), /*tp_basicsize*/
+  "ErPredprey.""PyErProblem", /*tp_name*/
+  sizeof(struct __pyx_obj_10ErPredprey_PyErProblem), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_3net_PyEvonet, /*tp_dealloc*/
+  __pyx_tp_dealloc_10ErPredprey_PyErProblem, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6830,9 +6204,9 @@ static PyTypeObject __pyx_type_3net_PyEvonet = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_3net_PyEvonet, /*tp_methods*/
+  __pyx_methods_10ErPredprey_PyErProblem, /*tp_methods*/
   0, /*tp_members*/
-  0, /*tp_getset*/
+  __pyx_getsets_10ErPredprey_PyErProblem, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -6842,7 +6216,7 @@ static PyTypeObject __pyx_type_3net_PyEvonet = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_3net_PyEvonet, /*tp_new*/
+  __pyx_tp_new_10ErPredprey_PyErProblem, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6887,195 +6261,131 @@ static PyMethodDef __pyx_methods[] = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   #if CYTHON_USE_MODULE_STATE
+  {0, __pyx_k_ErPredprey, sizeof(__pyx_k_ErPredprey), 0, 0, 1, 1},
+  {0, __pyx_k_ErPredprey_pyx, sizeof(__pyx_k_ErPredprey_pyx), 0, 0, 1, 0},
   {0, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet, sizeof(__pyx_k_PyEvonet), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet___reduce_cython, sizeof(__pyx_k_PyEvonet___reduce_cython), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet___setstate_cython, sizeof(__pyx_k_PyEvonet___setstate_cython), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_computeParameters, sizeof(__pyx_k_PyEvonet_computeParameters), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_copyGenotype, sizeof(__pyx_k_PyEvonet_copyGenotype), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_copyInput, sizeof(__pyx_k_PyEvonet_copyInput), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_copyNeuronact, sizeof(__pyx_k_PyEvonet_copyNeuronact), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_copyNormalization, sizeof(__pyx_k_PyEvonet_copyNormalization), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_copyOutput, sizeof(__pyx_k_PyEvonet_copyOutput), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_getNormalizationVectors, sizeof(__pyx_k_PyEvonet_getNormalizationVectors), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_initWeights, sizeof(__pyx_k_PyEvonet_initWeights), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_normphase, sizeof(__pyx_k_PyEvonet_normphase), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_resetNet, sizeof(__pyx_k_PyEvonet_resetNet), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_resetNormalizationVecto, sizeof(__pyx_k_PyEvonet_resetNormalizationVecto), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_seed, sizeof(__pyx_k_PyEvonet_seed), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_setNormalizationVectors, sizeof(__pyx_k_PyEvonet_setNormalizationVectors), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_updateNet, sizeof(__pyx_k_PyEvonet_updateNet), 0, 0, 1, 1},
-  {0, __pyx_k_PyEvonet_updateNormalizationVect, sizeof(__pyx_k_PyEvonet_updateNormalizationVect), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem, sizeof(__pyx_k_PyErProblem), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem___reduce_cython, sizeof(__pyx_k_PyErProblem___reduce_cython), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem___setstate_cython, sizeof(__pyx_k_PyErProblem___setstate_cython), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_close, sizeof(__pyx_k_PyErProblem_close), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_copyAct, sizeof(__pyx_k_PyErProblem_copyAct), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_copyDobj, sizeof(__pyx_k_PyErProblem_copyDobj), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_copyDone, sizeof(__pyx_k_PyErProblem_copyDone), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_copyObs, sizeof(__pyx_k_PyErProblem_copyObs), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_isDone, sizeof(__pyx_k_PyErProblem_isDone), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_render, sizeof(__pyx_k_PyErProblem_render), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_reset, sizeof(__pyx_k_PyErProblem_reset), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_seed, sizeof(__pyx_k_PyErProblem_seed), 0, 0, 1, 1},
+  {0, __pyx_k_PyErProblem_step, sizeof(__pyx_k_PyErProblem_step), 0, 0, 1, 1},
   {0, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
+  {0, __pyx_k__23, sizeof(__pyx_k__23), 0, 0, 1, 1},
   {0, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
-  {0, __pyx_k__30, sizeof(__pyx_k__30), 0, 0, 1, 1},
-  {0, __pyx_k_actFunct, sizeof(__pyx_k_actFunct), 0, 0, 1, 1},
+  {0, __pyx_k_act, sizeof(__pyx_k_act), 0, 0, 1, 1},
   {0, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
-  {0, __pyx_k_bias, sizeof(__pyx_k_bias), 0, 0, 1, 1},
   {0, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {0, __pyx_k_clip, sizeof(__pyx_k_clip), 0, 0, 1, 1},
-  {0, __pyx_k_computeParameters, sizeof(__pyx_k_computeParameters), 0, 0, 1, 1},
-  {0, __pyx_k_copyGenotype, sizeof(__pyx_k_copyGenotype), 0, 0, 1, 1},
-  {0, __pyx_k_copyInput, sizeof(__pyx_k_copyInput), 0, 0, 1, 1},
-  {0, __pyx_k_copyNeuronact, sizeof(__pyx_k_copyNeuronact), 0, 0, 1, 1},
-  {0, __pyx_k_copyNormalization, sizeof(__pyx_k_copyNormalization), 0, 0, 1, 1},
-  {0, __pyx_k_copyOutput, sizeof(__pyx_k_copyOutput), 0, 0, 1, 1},
+  {0, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
+  {0, __pyx_k_copyAct, sizeof(__pyx_k_copyAct), 0, 0, 1, 1},
+  {0, __pyx_k_copyDobj, sizeof(__pyx_k_copyDobj), 0, 0, 1, 1},
+  {0, __pyx_k_copyDone, sizeof(__pyx_k_copyDone), 0, 0, 1, 1},
+  {0, __pyx_k_copyObs, sizeof(__pyx_k_copyObs), 0, 0, 1, 1},
   {0, __pyx_k_disable, sizeof(__pyx_k_disable), 0, 1, 0, 0},
+  {0, __pyx_k_dob, sizeof(__pyx_k_dob), 0, 0, 1, 1},
+  {0, __pyx_k_done, sizeof(__pyx_k_done), 0, 0, 1, 1},
   {0, __pyx_k_enable, sizeof(__pyx_k_enable), 0, 1, 0, 0},
   {0, __pyx_k_gc, sizeof(__pyx_k_gc), 0, 1, 0, 0},
-  {0, __pyx_k_geno, sizeof(__pyx_k_geno), 0, 0, 1, 1},
-  {0, __pyx_k_getNormalizationVectors, sizeof(__pyx_k_getNormalizationVectors), 0, 0, 1, 1},
   {0, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
-  {0, __pyx_k_heterogeneous, sizeof(__pyx_k_heterogeneous), 0, 0, 1, 1},
-  {0, __pyx_k_high, sizeof(__pyx_k_high), 0, 0, 1, 1},
   {0, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {0, __pyx_k_initWeights, sizeof(__pyx_k_initWeights), 0, 0, 1, 1},
   {0, __pyx_k_initializing, sizeof(__pyx_k_initializing), 0, 0, 1, 1},
-  {0, __pyx_k_inp, sizeof(__pyx_k_inp), 0, 0, 1, 1},
+  {0, __pyx_k_isDone, sizeof(__pyx_k_isDone), 0, 0, 1, 1},
   {0, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
   {0, __pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0, 0},
-  {0, __pyx_k_low, sizeof(__pyx_k_low), 0, 0, 1, 1},
   {0, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {0, __pyx_k_na, sizeof(__pyx_k_na), 0, 0, 1, 1},
   {0, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {0, __pyx_k_nbins, sizeof(__pyx_k_nbins), 0, 0, 1, 1},
-  {0, __pyx_k_net, sizeof(__pyx_k_net), 0, 0, 1, 1},
-  {0, __pyx_k_netType, sizeof(__pyx_k_netType), 0, 0, 1, 1},
-  {0, __pyx_k_net_pyx, sizeof(__pyx_k_net_pyx), 0, 0, 1, 0},
-  {0, __pyx_k_nhiddens, sizeof(__pyx_k_nhiddens), 0, 0, 1, 1},
-  {0, __pyx_k_nhiddens2, sizeof(__pyx_k_nhiddens2), 0, 0, 1, 1},
-  {0, __pyx_k_ninputs, sizeof(__pyx_k_ninputs), 0, 0, 1, 1},
-  {0, __pyx_k_nlayers, sizeof(__pyx_k_nlayers), 0, 0, 1, 1},
-  {0, __pyx_k_nnetworks, sizeof(__pyx_k_nnetworks), 0, 0, 1, 1},
-  {0, __pyx_k_no, sizeof(__pyx_k_no), 0, 0, 1, 1},
   {0, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
-  {0, __pyx_k_normalize, sizeof(__pyx_k_normalize), 0, 0, 1, 1},
-  {0, __pyx_k_normphase, sizeof(__pyx_k_normphase), 0, 0, 1, 1},
-  {0, __pyx_k_noutputs, sizeof(__pyx_k_noutputs), 0, 0, 1, 1},
   {0, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {0, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {0, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {0, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
-  {0, __pyx_k_outType, sizeof(__pyx_k_outType), 0, 0, 1, 1},
-  {0, __pyx_k_outp, sizeof(__pyx_k_outp), 0, 0, 1, 1},
-  {0, __pyx_k_phase, sizeof(__pyx_k_phase), 0, 0, 1, 1},
+  {0, __pyx_k_obs, sizeof(__pyx_k_obs), 0, 0, 1, 1},
   {0, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
-  {0, __pyx_k_randAct, sizeof(__pyx_k_randAct), 0, 0, 1, 1},
-  {0, __pyx_k_randActR, sizeof(__pyx_k_randActR), 0, 0, 1, 1},
   {0, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {0, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {0, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
-  {0, __pyx_k_resetNet, sizeof(__pyx_k_resetNet), 0, 0, 1, 1},
-  {0, __pyx_k_resetNormalizationVectors, sizeof(__pyx_k_resetNormalizationVectors), 0, 0, 1, 1},
+  {0, __pyx_k_render, sizeof(__pyx_k_render), 0, 0, 1, 1},
+  {0, __pyx_k_reset, sizeof(__pyx_k_reset), 0, 0, 1, 1},
   {0, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {0, __pyx_k_seed, sizeof(__pyx_k_seed), 0, 0, 1, 1},
   {0, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
-  {0, __pyx_k_setNormalizationVectors, sizeof(__pyx_k_setNormalizationVectors), 0, 0, 1, 1},
   {0, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {0, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {0, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
+  {0, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {0, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {0, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
-  {0, __pyx_k_updateNet, sizeof(__pyx_k_updateNet), 0, 0, 1, 1},
-  {0, __pyx_k_updateNormalizationVectors, sizeof(__pyx_k_updateNormalizationVectors), 0, 0, 1, 1},
-  {0, __pyx_k_wInit, sizeof(__pyx_k_wInit), 0, 0, 1, 1},
-  {0, __pyx_k_wrange, sizeof(__pyx_k_wrange), 0, 0, 1, 1},
   #else
+  {&__pyx_n_s_ErPredprey, __pyx_k_ErPredprey, sizeof(__pyx_k_ErPredprey), 0, 0, 1, 1},
+  {&__pyx_kp_s_ErPredprey_pyx, __pyx_k_ErPredprey_pyx, sizeof(__pyx_k_ErPredprey_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet, __pyx_k_PyEvonet, sizeof(__pyx_k_PyEvonet), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet___reduce_cython, __pyx_k_PyEvonet___reduce_cython, sizeof(__pyx_k_PyEvonet___reduce_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet___setstate_cython, __pyx_k_PyEvonet___setstate_cython, sizeof(__pyx_k_PyEvonet___setstate_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_computeParameters, __pyx_k_PyEvonet_computeParameters, sizeof(__pyx_k_PyEvonet_computeParameters), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_copyGenotype, __pyx_k_PyEvonet_copyGenotype, sizeof(__pyx_k_PyEvonet_copyGenotype), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_copyInput, __pyx_k_PyEvonet_copyInput, sizeof(__pyx_k_PyEvonet_copyInput), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_copyNeuronact, __pyx_k_PyEvonet_copyNeuronact, sizeof(__pyx_k_PyEvonet_copyNeuronact), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_copyNormalization, __pyx_k_PyEvonet_copyNormalization, sizeof(__pyx_k_PyEvonet_copyNormalization), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_copyOutput, __pyx_k_PyEvonet_copyOutput, sizeof(__pyx_k_PyEvonet_copyOutput), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_getNormalizationVectors, __pyx_k_PyEvonet_getNormalizationVectors, sizeof(__pyx_k_PyEvonet_getNormalizationVectors), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_initWeights, __pyx_k_PyEvonet_initWeights, sizeof(__pyx_k_PyEvonet_initWeights), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_normphase, __pyx_k_PyEvonet_normphase, sizeof(__pyx_k_PyEvonet_normphase), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_resetNet, __pyx_k_PyEvonet_resetNet, sizeof(__pyx_k_PyEvonet_resetNet), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_resetNormalizationVecto, __pyx_k_PyEvonet_resetNormalizationVecto, sizeof(__pyx_k_PyEvonet_resetNormalizationVecto), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_seed, __pyx_k_PyEvonet_seed, sizeof(__pyx_k_PyEvonet_seed), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_setNormalizationVectors, __pyx_k_PyEvonet_setNormalizationVectors, sizeof(__pyx_k_PyEvonet_setNormalizationVectors), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_updateNet, __pyx_k_PyEvonet_updateNet, sizeof(__pyx_k_PyEvonet_updateNet), 0, 0, 1, 1},
-  {&__pyx_n_s_PyEvonet_updateNormalizationVect, __pyx_k_PyEvonet_updateNormalizationVect, sizeof(__pyx_k_PyEvonet_updateNormalizationVect), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem, __pyx_k_PyErProblem, sizeof(__pyx_k_PyErProblem), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem___reduce_cython, __pyx_k_PyErProblem___reduce_cython, sizeof(__pyx_k_PyErProblem___reduce_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem___setstate_cython, __pyx_k_PyErProblem___setstate_cython, sizeof(__pyx_k_PyErProblem___setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_close, __pyx_k_PyErProblem_close, sizeof(__pyx_k_PyErProblem_close), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_copyAct, __pyx_k_PyErProblem_copyAct, sizeof(__pyx_k_PyErProblem_copyAct), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_copyDobj, __pyx_k_PyErProblem_copyDobj, sizeof(__pyx_k_PyErProblem_copyDobj), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_copyDone, __pyx_k_PyErProblem_copyDone, sizeof(__pyx_k_PyErProblem_copyDone), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_copyObs, __pyx_k_PyErProblem_copyObs, sizeof(__pyx_k_PyErProblem_copyObs), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_isDone, __pyx_k_PyErProblem_isDone, sizeof(__pyx_k_PyErProblem_isDone), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_render, __pyx_k_PyErProblem_render, sizeof(__pyx_k_PyErProblem_render), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_reset, __pyx_k_PyErProblem_reset, sizeof(__pyx_k_PyErProblem_reset), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_seed, __pyx_k_PyErProblem_seed, sizeof(__pyx_k_PyErProblem_seed), 0, 0, 1, 1},
+  {&__pyx_n_s_PyErProblem_step, __pyx_k_PyErProblem_step, sizeof(__pyx_k_PyErProblem_step), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
+  {&__pyx_n_s__23, __pyx_k__23, sizeof(__pyx_k__23), 0, 0, 1, 1},
   {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
-  {&__pyx_n_s__30, __pyx_k__30, sizeof(__pyx_k__30), 0, 0, 1, 1},
-  {&__pyx_n_s_actFunct, __pyx_k_actFunct, sizeof(__pyx_k_actFunct), 0, 0, 1, 1},
+  {&__pyx_n_s_act, __pyx_k_act, sizeof(__pyx_k_act), 0, 0, 1, 1},
   {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
-  {&__pyx_n_s_bias, __pyx_k_bias, sizeof(__pyx_k_bias), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_clip, __pyx_k_clip, sizeof(__pyx_k_clip), 0, 0, 1, 1},
-  {&__pyx_n_s_computeParameters, __pyx_k_computeParameters, sizeof(__pyx_k_computeParameters), 0, 0, 1, 1},
-  {&__pyx_n_s_copyGenotype, __pyx_k_copyGenotype, sizeof(__pyx_k_copyGenotype), 0, 0, 1, 1},
-  {&__pyx_n_s_copyInput, __pyx_k_copyInput, sizeof(__pyx_k_copyInput), 0, 0, 1, 1},
-  {&__pyx_n_s_copyNeuronact, __pyx_k_copyNeuronact, sizeof(__pyx_k_copyNeuronact), 0, 0, 1, 1},
-  {&__pyx_n_s_copyNormalization, __pyx_k_copyNormalization, sizeof(__pyx_k_copyNormalization), 0, 0, 1, 1},
-  {&__pyx_n_s_copyOutput, __pyx_k_copyOutput, sizeof(__pyx_k_copyOutput), 0, 0, 1, 1},
+  {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
+  {&__pyx_n_s_copyAct, __pyx_k_copyAct, sizeof(__pyx_k_copyAct), 0, 0, 1, 1},
+  {&__pyx_n_s_copyDobj, __pyx_k_copyDobj, sizeof(__pyx_k_copyDobj), 0, 0, 1, 1},
+  {&__pyx_n_s_copyDone, __pyx_k_copyDone, sizeof(__pyx_k_copyDone), 0, 0, 1, 1},
+  {&__pyx_n_s_copyObs, __pyx_k_copyObs, sizeof(__pyx_k_copyObs), 0, 0, 1, 1},
   {&__pyx_kp_u_disable, __pyx_k_disable, sizeof(__pyx_k_disable), 0, 1, 0, 0},
+  {&__pyx_n_s_dob, __pyx_k_dob, sizeof(__pyx_k_dob), 0, 0, 1, 1},
+  {&__pyx_n_s_done, __pyx_k_done, sizeof(__pyx_k_done), 0, 0, 1, 1},
   {&__pyx_kp_u_enable, __pyx_k_enable, sizeof(__pyx_k_enable), 0, 1, 0, 0},
   {&__pyx_kp_u_gc, __pyx_k_gc, sizeof(__pyx_k_gc), 0, 1, 0, 0},
-  {&__pyx_n_s_geno, __pyx_k_geno, sizeof(__pyx_k_geno), 0, 0, 1, 1},
-  {&__pyx_n_s_getNormalizationVectors, __pyx_k_getNormalizationVectors, sizeof(__pyx_k_getNormalizationVectors), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
-  {&__pyx_n_s_heterogeneous, __pyx_k_heterogeneous, sizeof(__pyx_k_heterogeneous), 0, 0, 1, 1},
-  {&__pyx_n_s_high, __pyx_k_high, sizeof(__pyx_k_high), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {&__pyx_n_s_initWeights, __pyx_k_initWeights, sizeof(__pyx_k_initWeights), 0, 0, 1, 1},
   {&__pyx_n_s_initializing, __pyx_k_initializing, sizeof(__pyx_k_initializing), 0, 0, 1, 1},
-  {&__pyx_n_s_inp, __pyx_k_inp, sizeof(__pyx_k_inp), 0, 0, 1, 1},
+  {&__pyx_n_s_isDone, __pyx_k_isDone, sizeof(__pyx_k_isDone), 0, 0, 1, 1},
   {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
   {&__pyx_kp_u_isenabled, __pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0, 0},
-  {&__pyx_n_s_low, __pyx_k_low, sizeof(__pyx_k_low), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {&__pyx_n_s_na, __pyx_k_na, sizeof(__pyx_k_na), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_nbins, __pyx_k_nbins, sizeof(__pyx_k_nbins), 0, 0, 1, 1},
-  {&__pyx_n_s_net, __pyx_k_net, sizeof(__pyx_k_net), 0, 0, 1, 1},
-  {&__pyx_n_s_netType, __pyx_k_netType, sizeof(__pyx_k_netType), 0, 0, 1, 1},
-  {&__pyx_kp_s_net_pyx, __pyx_k_net_pyx, sizeof(__pyx_k_net_pyx), 0, 0, 1, 0},
-  {&__pyx_n_s_nhiddens, __pyx_k_nhiddens, sizeof(__pyx_k_nhiddens), 0, 0, 1, 1},
-  {&__pyx_n_s_nhiddens2, __pyx_k_nhiddens2, sizeof(__pyx_k_nhiddens2), 0, 0, 1, 1},
-  {&__pyx_n_s_ninputs, __pyx_k_ninputs, sizeof(__pyx_k_ninputs), 0, 0, 1, 1},
-  {&__pyx_n_s_nlayers, __pyx_k_nlayers, sizeof(__pyx_k_nlayers), 0, 0, 1, 1},
-  {&__pyx_n_s_nnetworks, __pyx_k_nnetworks, sizeof(__pyx_k_nnetworks), 0, 0, 1, 1},
-  {&__pyx_n_s_no, __pyx_k_no, sizeof(__pyx_k_no), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
-  {&__pyx_n_s_normalize, __pyx_k_normalize, sizeof(__pyx_k_normalize), 0, 0, 1, 1},
-  {&__pyx_n_s_normphase, __pyx_k_normphase, sizeof(__pyx_k_normphase), 0, 0, 1, 1},
-  {&__pyx_n_s_noutputs, __pyx_k_noutputs, sizeof(__pyx_k_noutputs), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_kp_s_numpy_core_multiarray_failed_to, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {&__pyx_kp_s_numpy_core_umath_failed_to_impor, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
-  {&__pyx_n_s_outType, __pyx_k_outType, sizeof(__pyx_k_outType), 0, 0, 1, 1},
-  {&__pyx_n_s_outp, __pyx_k_outp, sizeof(__pyx_k_outp), 0, 0, 1, 1},
-  {&__pyx_n_s_phase, __pyx_k_phase, sizeof(__pyx_k_phase), 0, 0, 1, 1},
+  {&__pyx_n_s_obs, __pyx_k_obs, sizeof(__pyx_k_obs), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_state, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
-  {&__pyx_n_s_randAct, __pyx_k_randAct, sizeof(__pyx_k_randAct), 0, 0, 1, 1},
-  {&__pyx_n_s_randActR, __pyx_k_randActR, sizeof(__pyx_k_randActR), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
-  {&__pyx_n_s_resetNet, __pyx_k_resetNet, sizeof(__pyx_k_resetNet), 0, 0, 1, 1},
-  {&__pyx_n_s_resetNormalizationVectors, __pyx_k_resetNormalizationVectors, sizeof(__pyx_k_resetNormalizationVectors), 0, 0, 1, 1},
+  {&__pyx_n_s_render, __pyx_k_render, sizeof(__pyx_k_render), 0, 0, 1, 1},
+  {&__pyx_n_s_reset, __pyx_k_reset, sizeof(__pyx_k_reset), 0, 0, 1, 1},
   {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {&__pyx_n_s_seed, __pyx_k_seed, sizeof(__pyx_k_seed), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
-  {&__pyx_n_s_setNormalizationVectors, __pyx_k_setNormalizationVectors, sizeof(__pyx_k_setNormalizationVectors), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_spec, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
+  {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
-  {&__pyx_n_s_updateNet, __pyx_k_updateNet, sizeof(__pyx_k_updateNet), 0, 0, 1, 1},
-  {&__pyx_n_s_updateNormalizationVectors, __pyx_k_updateNormalizationVectors, sizeof(__pyx_k_updateNormalizationVectors), 0, 0, 1, 1},
-  {&__pyx_n_s_wInit, __pyx_k_wInit, sizeof(__pyx_k_wInit), 0, 0, 1, 1},
-  {&__pyx_n_s_wrange, __pyx_k_wrange, sizeof(__pyx_k_wrange), 0, 0, 1, 1},
   #endif
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -7115,171 +6425,120 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "net.pyx":32
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
+  /* "ErPredprey.pyx":29
+ *         self.cproblem = Problem()
  * 
  *     def seed(self, int s):             # <<<<<<<<<<<<<<
- *         self.c_net.seed(s)
+ *         self.cproblem.seed(s)
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_s); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_s); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_seed, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_seed, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(1, 29, __pyx_L1_error)
 
-  /* "net.pyx":35
- *         self.c_net.seed(s)
+  /* "ErPredprey.pyx":32
+ *         self.cproblem.seed(s)
  * 
- *     def resetNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNet()
+ *     def reset(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.reset()
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_resetNet, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_reset, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 32, __pyx_L1_error)
 
-  /* "net.pyx":38
- *         self.c_net.resetNet()
+  /* "ErPredprey.pyx":35
+ *         self.cproblem.reset()
  * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyGenotype(&geno[0])
+ *     def step(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.step()
  * 
  */
-  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_geno); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 38, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_copyGenotype, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_step, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(1, 35, __pyx_L1_error)
 
-  /* "net.pyx":41
- *         self.c_net.copyGenotype(&geno[0])
+  /* "ErPredprey.pyx":38
+ *         return self.cproblem.step()
  * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyInput(&inp[0])
+ *     def close(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.close()
  * 
  */
-  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_inp); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 41, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_copyInput, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(1, 41, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_close, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 38, __pyx_L1_error)
 
-  /* "net.pyx":44
- *         self.c_net.copyInput(&inp[0])
+  /* "ErPredprey.pyx":41
+ *         self.cproblem.close()
  * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyOutput(&outp[0])
+ *     def render(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.render()
  * 
  */
-  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_outp); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 44, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_copyOutput, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(1, 44, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_render, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(1, 41, __pyx_L1_error)
 
-  /* "net.pyx":47
- *         self.c_net.copyOutput(&outp[0])
+  /* "ErPredprey.pyx":44
+ *         self.cproblem.render()
  * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNeuronact(&na[0])
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyObs(&obs[0])
  * 
  */
-  __pyx_tuple__14 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_na); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 47, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_copyNeuronact, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(1, 47, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_obs); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_copyObs, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(1, 44, __pyx_L1_error)
 
-  /* "net.pyx":50
- *         self.c_net.copyNeuronact(&na[0])
+  /* "ErPredprey.pyx":47
+ *         self.cproblem.copyObs(&obs[0])
  * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNormalization(&no[0])
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyAct(&act[0])
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_no); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 50, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_copyNormalization, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(1, 50, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_act); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 47, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_copyAct, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(1, 47, __pyx_L1_error)
 
-  /* "net.pyx":53
- *         self.c_net.copyNormalization(&no[0])
+  /* "ErPredprey.pyx":50
+ *         self.cproblem.copyAct(&act[0])
  * 
- *     def updateNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNet()
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDone(&done[0])
  * 
  */
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_updateNet, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(1, 53, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_done); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 50, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_copyDone, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(1, 50, __pyx_L1_error)
 
-  /* "net.pyx":56
- *         self.c_net.updateNet()
+  /* "ErPredprey.pyx":53
+ *         self.cproblem.copyDone(&done[0])
  * 
- *     def computeParameters(self):             # <<<<<<<<<<<<<<
- *         return self.c_net.computeParameters()
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDobj(&dob[0])
  * 
  */
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_computeParameters, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(1, 56, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_dob); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(1, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_copyDobj, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(1, 53, __pyx_L1_error)
 
-  /* "net.pyx":59
- *         return self.c_net.computeParameters()
+  /* "ErPredprey.pyx":56
+ *         self.cproblem.copyDobj(&dob[0])
  * 
- *     def initWeights(self):             # <<<<<<<<<<<<<<
- *         self.c_net.initWeights()
+ *     def isDone(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.isDone()
  * 
  */
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_initWeights, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(1, 59, __pyx_L1_error)
-
-  /* "net.pyx":62
- *         self.c_net.initWeights()
- * 
- *     def normphase(self, int phase):             # <<<<<<<<<<<<<<
- *         self.c_net.normphase(phase)
- * 
- */
-  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_phase); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(1, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_normphase, 62, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(1, 62, __pyx_L1_error)
-
-  /* "net.pyx":65
- *         self.c_net.normphase(phase)
- * 
- *     def updateNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNormalizationVectors()
- * 
- */
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_updateNormalizationVectors, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(1, 65, __pyx_L1_error)
-
-  /* "net.pyx":68
- *         self.c_net.updateNormalizationVectors()
- * 
- *     def setNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.setNormalizationVectors()
- * 
- */
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_setNormalizationVectors, 68, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(1, 68, __pyx_L1_error)
-
-  /* "net.pyx":71
- *         self.c_net.setNormalizationVectors()
- * 
- *     def getNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.getNormalizationVectors()
- * 
- */
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_getNormalizationVectors, 71, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(1, 71, __pyx_L1_error)
-
-  /* "net.pyx":74
- *         self.c_net.getNormalizationVectors()
- * 
- *     def resetNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNormalizationVectors()
- * 
- */
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_net_pyx, __pyx_n_s_resetNormalizationVectors, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ErPredprey_pyx, __pyx_n_s_isDone, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(1, 56, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 1, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -7287,10 +6546,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_tuple__28 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7301,104 +6560,74 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   #if CYTHON_USE_MODULE_STATE
-  if (__Pyx_InitString(__pyx_string_tab[0], &__pyx_n_s_ImportError) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[1], &__pyx_n_s_PyEvonet) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[2], &__pyx_n_s_PyEvonet___reduce_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[3], &__pyx_n_s_PyEvonet___setstate_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[4], &__pyx_n_s_PyEvonet_computeParameters) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[5], &__pyx_n_s_PyEvonet_copyGenotype) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[6], &__pyx_n_s_PyEvonet_copyInput) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[7], &__pyx_n_s_PyEvonet_copyNeuronact) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[8], &__pyx_n_s_PyEvonet_copyNormalization) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[9], &__pyx_n_s_PyEvonet_copyOutput) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[10], &__pyx_n_s_PyEvonet_getNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[11], &__pyx_n_s_PyEvonet_initWeights) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[12], &__pyx_n_s_PyEvonet_normphase) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[13], &__pyx_n_s_PyEvonet_resetNet) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[14], &__pyx_n_s_PyEvonet_resetNormalizationVecto) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[15], &__pyx_n_s_PyEvonet_seed) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[16], &__pyx_n_s_PyEvonet_setNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[17], &__pyx_n_s_PyEvonet_updateNet) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[18], &__pyx_n_s_PyEvonet_updateNormalizationVect) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[19], &__pyx_n_s_TypeError) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[20], &__pyx_n_s__3) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[21], &__pyx_n_s__30) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[22], &__pyx_n_s_actFunct) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[23], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[24], &__pyx_n_s_bias) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[25], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[26], &__pyx_n_s_clip) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[27], &__pyx_n_s_computeParameters) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[28], &__pyx_n_s_copyGenotype) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[29], &__pyx_n_s_copyInput) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[30], &__pyx_n_s_copyNeuronact) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[31], &__pyx_n_s_copyNormalization) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[32], &__pyx_n_s_copyOutput) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[33], &__pyx_kp_u_disable) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[34], &__pyx_kp_u_enable) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[35], &__pyx_kp_u_gc) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[36], &__pyx_n_s_geno) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[37], &__pyx_n_s_getNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[38], &__pyx_n_s_getstate) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[39], &__pyx_n_s_heterogeneous) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[40], &__pyx_n_s_high) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[41], &__pyx_n_s_import) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[42], &__pyx_n_s_initWeights) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[43], &__pyx_n_s_initializing) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[44], &__pyx_n_s_inp) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[45], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[46], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_n_s_low) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_na) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_n_s_name) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_n_s_nbins) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_n_s_net) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_netType) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_kp_s_net_pyx) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_n_s_nhiddens) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_nhiddens2) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_n_s_ninputs) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_nlayers) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_n_s_nnetworks) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_n_s_no) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_kp_s_no_default___reduce___due_to_non) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_n_s_normalize) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_s_normphase) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_noutputs) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_np) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_n_s_numpy) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_kp_s_numpy_core_multiarray_failed_to) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_kp_s_numpy_core_umath_failed_to_impor) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_outType) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_outp) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_n_s_phase) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_s_pyx_state) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_s_randAct) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_randActR) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_reduce) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_reduce_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_reduce_ex) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_resetNet) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_resetNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_s) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_seed) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_self) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_setNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_setstate) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_setstate_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_spec) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_kp_s_stringsource) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s_test) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_s_time) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s_updateNet) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s_updateNormalizationVectors) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s_wInit) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_wrange) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[0], &__pyx_n_s_ErPredprey) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[1], &__pyx_kp_s_ErPredprey_pyx) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[2], &__pyx_n_s_ImportError) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[3], &__pyx_n_s_PyErProblem) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[4], &__pyx_n_s_PyErProblem___reduce_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[5], &__pyx_n_s_PyErProblem___setstate_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[6], &__pyx_n_s_PyErProblem_close) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[7], &__pyx_n_s_PyErProblem_copyAct) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[8], &__pyx_n_s_PyErProblem_copyDobj) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[9], &__pyx_n_s_PyErProblem_copyDone) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[10], &__pyx_n_s_PyErProblem_copyObs) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[11], &__pyx_n_s_PyErProblem_isDone) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[12], &__pyx_n_s_PyErProblem_render) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[13], &__pyx_n_s_PyErProblem_reset) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[14], &__pyx_n_s_PyErProblem_seed) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[15], &__pyx_n_s_PyErProblem_step) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[16], &__pyx_n_s_TypeError) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[17], &__pyx_n_s__23) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[18], &__pyx_n_s__3) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[19], &__pyx_n_s_act) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[20], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[21], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[22], &__pyx_n_s_close) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[23], &__pyx_n_s_copyAct) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[24], &__pyx_n_s_copyDobj) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[25], &__pyx_n_s_copyDone) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[26], &__pyx_n_s_copyObs) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[27], &__pyx_kp_u_disable) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[28], &__pyx_n_s_dob) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[29], &__pyx_n_s_done) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[30], &__pyx_kp_u_enable) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[31], &__pyx_kp_u_gc) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[32], &__pyx_n_s_getstate) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[33], &__pyx_n_s_import) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[34], &__pyx_n_s_initializing) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[35], &__pyx_n_s_isDone) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[36], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[37], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[38], &__pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[39], &__pyx_n_s_name) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[40], &__pyx_kp_s_no_default___reduce___due_to_non) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[41], &__pyx_n_s_np) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[42], &__pyx_n_s_numpy) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[43], &__pyx_kp_s_numpy_core_multiarray_failed_to) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[44], &__pyx_kp_s_numpy_core_umath_failed_to_impor) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[45], &__pyx_n_s_obs) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[46], &__pyx_n_s_pyx_state) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_n_s_reduce) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_n_s_reduce_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_reduce_ex) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_n_s_render) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_n_s_reset) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_n_s_s) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_seed) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_n_s_self) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_n_s_setstate) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_setstate_cython) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_n_s_spec) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_step) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_kp_s_stringsource) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_n_s_test) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_n_s_time) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
   #endif
   #if !CYTHON_USE_MODULE_STATE
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(1, 1, __pyx_L1_error);
   #endif
+  __pyx_float_1_0 = PyFloat_FromDouble(1.0); if (unlikely(!__pyx_float_1_0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_float_neg_1_0 = PyFloat_FromDouble(-1.0); if (unlikely(!__pyx_float_neg_1_0)) __PYX_ERR(1, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7472,27 +6701,27 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_3net_PyEvonet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3net_PyEvonet_spec, NULL); if (unlikely(!__pyx_ptype_3net_PyEvonet)) __PYX_ERR(1, 23, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3net_PyEvonet_spec, __pyx_ptype_3net_PyEvonet) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_ptype_10ErPredprey_PyErProblem = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10ErPredprey_PyErProblem_spec, NULL); if (unlikely(!__pyx_ptype_10ErPredprey_PyErProblem)) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10ErPredprey_PyErProblem_spec, __pyx_ptype_10ErPredprey_PyErProblem) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
   #else
-  __pyx_ptype_3net_PyEvonet = &__pyx_type_3net_PyEvonet;
+  __pyx_ptype_10ErPredprey_PyErProblem = &__pyx_type_10ErPredprey_PyErProblem;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_3net_PyEvonet) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10ErPredprey_PyErProblem) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_3net_PyEvonet->tp_print = 0;
+  __pyx_ptype_10ErPredprey_PyErProblem->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_3net_PyEvonet->tp_dictoffset && __pyx_ptype_3net_PyEvonet->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_3net_PyEvonet->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_10ErPredprey_PyErProblem->tp_dictoffset && __pyx_ptype_10ErPredprey_PyErProblem->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_10ErPredprey_PyErProblem->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyEvonet, (PyObject *) __pyx_ptype_3net_PyEvonet) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyErProblem, (PyObject *) __pyx_ptype_10ErPredprey_PyErProblem) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_3net_PyEvonet) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10ErPredprey_PyErProblem) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -7583,10 +6812,10 @@ static int __Pyx_modinit_function_import_code(void) {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_net(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_ErPredprey(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_net},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_ErPredprey},
   {0, NULL}
 };
 #endif
@@ -7599,7 +6828,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "net",
+      "ErPredprey",
       __pyx_k_This_file_belong_to_https_githu, /* m_doc */
     #if CYTHON_PEP489_MULTI_PHASE_INIT
       0, /* m_size */
@@ -7647,11 +6876,11 @@ namespace {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initnet(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initnet(void)
+__Pyx_PyMODINIT_FUNC initErPredprey(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initErPredprey(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_net(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_net(void)
+__Pyx_PyMODINIT_FUNC PyInit_ErPredprey(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_ErPredprey(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -7732,7 +6961,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_net(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_ErPredprey(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -7746,7 +6975,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_net(PyObject *__pyx_pyinit_module)
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'net' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'ErPredprey' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -7758,7 +6987,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_net(PyObject *__pyx_pyinit_module)
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("net", __pyx_methods, __pyx_k_This_file_belong_to_https_githu, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("ErPredprey", __pyx_methods, __pyx_k_This_file_belong_to_https_githu, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   if (unlikely(!__pyx_m)) __PYX_ERR(1, 1, __pyx_L1_error)
   #elif CYTHON_COMPILING_IN_LIMITED_API
   __pyx_t_1 = PyModule_Create(&__pyx_moduledef); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
@@ -7789,7 +7018,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_net(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_ErPredprey(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -7827,14 +7056,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_net) {
+  if (__pyx_module_is_main_ErPredprey) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "net")) {
-      if (unlikely((PyDict_SetItemString(modules, "net", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ErPredprey")) {
+      if (unlikely((PyDict_SetItemString(modules, "ErPredprey", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -7855,7 +7084,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "net.pyx":16
+  /* "ErPredprey.pyx":16
  * import cython
  * # import both numpy and the Cython declarations for numpy
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -7867,7 +7096,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_2) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "net.pyx":17
+  /* "ErPredprey.pyx":17
  * # import both numpy and the Cython declarations for numpy
  * import numpy as np
  * import time             # <<<<<<<<<<<<<<
@@ -7879,207 +7108,142 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_2) < 0) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "net.pyx":32
- *         self.c_net = Evonet(nnetworks, heterogeneous, ninputs, nhiddens, noutputs, nlayers, nhiddens2, bias, netType, actFunct, outType, wInit, clip, normalize, randAct, randActR, wrange, nbins, low, high)
+  /* "ErPredprey.pyx":29
+ *         self.cproblem = Problem()
  * 
  *     def seed(self, int s):             # <<<<<<<<<<<<<<
- *         self.c_net.seed(s)
+ *         self.cproblem.seed(s)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_5seed, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_seed, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_3seed, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_seed, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_seed, __pyx_t_2) < 0) __PYX_ERR(1, 32, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_seed, __pyx_t_2) < 0) __PYX_ERR(1, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":35
- *         self.c_net.seed(s)
+  /* "ErPredprey.pyx":32
+ *         self.cproblem.seed(s)
  * 
- *     def resetNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNet()
+ *     def reset(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.reset()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_7resetNet, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_resetNet, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_5reset, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_reset, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_resetNet, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_reset, __pyx_t_2) < 0) __PYX_ERR(1, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":38
- *         self.c_net.resetNet()
+  /* "ErPredprey.pyx":35
+ *         self.cproblem.reset()
  * 
- *     def copyGenotype(self, np.ndarray[double, ndim=1, mode="c"] geno not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyGenotype(&geno[0])
+ *     def step(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.step()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_9copyGenotype, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_copyGenotype, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_7step, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_step, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_copyGenotype, __pyx_t_2) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_step, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":41
- *         self.c_net.copyGenotype(&geno[0])
+  /* "ErPredprey.pyx":38
+ *         return self.cproblem.step()
  * 
- *     def copyInput(self, np.ndarray[float, ndim=1, mode="c"] inp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyInput(&inp[0])
+ *     def close(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.close()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_11copyInput, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_copyInput, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 41, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_9close, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_close, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_copyInput, __pyx_t_2) < 0) __PYX_ERR(1, 41, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_close, __pyx_t_2) < 0) __PYX_ERR(1, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":44
- *         self.c_net.copyInput(&inp[0])
+  /* "ErPredprey.pyx":41
+ *         self.cproblem.close()
  * 
- *     def copyOutput(self, np.ndarray[float, ndim=1, mode="c"] outp not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyOutput(&outp[0])
+ *     def render(self):             # <<<<<<<<<<<<<<
+ *         self.cproblem.render()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_13copyOutput, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_copyOutput, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_11render, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_render, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__10)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_copyOutput, __pyx_t_2) < 0) __PYX_ERR(1, 44, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_render, __pyx_t_2) < 0) __PYX_ERR(1, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":47
- *         self.c_net.copyOutput(&outp[0])
+  /* "ErPredprey.pyx":44
+ *         self.cproblem.render()
  * 
- *     def copyNeuronact(self, np.ndarray[double, ndim=1, mode="c"] na not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNeuronact(&na[0])
+ *     def copyObs(self, np.ndarray[float, ndim=1, mode="c"] obs not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyObs(&obs[0])
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_15copyNeuronact, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_copyNeuronact, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_13copyObs, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_copyObs, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_copyNeuronact, __pyx_t_2) < 0) __PYX_ERR(1, 47, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_copyObs, __pyx_t_2) < 0) __PYX_ERR(1, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":50
- *         self.c_net.copyNeuronact(&na[0])
+  /* "ErPredprey.pyx":47
+ *         self.cproblem.copyObs(&obs[0])
  * 
- *     def copyNormalization(self, np.ndarray[double, ndim=1, mode="c"] no not None):             # <<<<<<<<<<<<<<
- *         self.c_net.copyNormalization(&no[0])
+ *     def copyAct(self, np.ndarray[float, ndim=1, mode="c"] act not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyAct(&act[0])
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_17copyNormalization, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_copyNormalization, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_15copyAct, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_copyAct, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_copyNormalization, __pyx_t_2) < 0) __PYX_ERR(1, 50, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_copyAct, __pyx_t_2) < 0) __PYX_ERR(1, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":53
- *         self.c_net.copyNormalization(&no[0])
+  /* "ErPredprey.pyx":50
+ *         self.cproblem.copyAct(&act[0])
  * 
- *     def updateNet(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNet()
+ *     def copyDone(self, np.ndarray[int, ndim=1, mode="c"] done not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDone(&done[0])
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_19updateNet, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_updateNet, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 53, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_17copyDone, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_copyDone, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_updateNet, __pyx_t_2) < 0) __PYX_ERR(1, 53, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_copyDone, __pyx_t_2) < 0) __PYX_ERR(1, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":56
- *         self.c_net.updateNet()
+  /* "ErPredprey.pyx":53
+ *         self.cproblem.copyDone(&done[0])
  * 
- *     def computeParameters(self):             # <<<<<<<<<<<<<<
- *         return self.c_net.computeParameters()
+ *     def copyDobj(self, np.ndarray[double, ndim=1, mode="c"] dob not None):             # <<<<<<<<<<<<<<
+ *         self.cproblem.copyDobj(&dob[0])
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_21computeParameters, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_computeParameters, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 56, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_19copyDobj, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_copyDobj, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_computeParameters, __pyx_t_2) < 0) __PYX_ERR(1, 56, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_copyDobj, __pyx_t_2) < 0) __PYX_ERR(1, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
-  /* "net.pyx":59
- *         return self.c_net.computeParameters()
+  /* "ErPredprey.pyx":56
+ *         self.cproblem.copyDobj(&dob[0])
  * 
- *     def initWeights(self):             # <<<<<<<<<<<<<<
- *         self.c_net.initWeights()
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_23initWeights, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_initWeights, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_initWeights, __pyx_t_2) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
-
-  /* "net.pyx":62
- *         self.c_net.initWeights()
- * 
- *     def normphase(self, int phase):             # <<<<<<<<<<<<<<
- *         self.c_net.normphase(phase)
+ *     def isDone(self):             # <<<<<<<<<<<<<<
+ *         return self.cproblem.isDone()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_25normphase, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_normphase, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_21isDone, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem_isDone, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_normphase, __pyx_t_2) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_10ErPredprey_PyErProblem->tp_dict, __pyx_n_s_isDone, __pyx_t_2) < 0) __PYX_ERR(1, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
-
-  /* "net.pyx":65
- *         self.c_net.normphase(phase)
- * 
- *     def updateNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.updateNormalizationVectors()
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_27updateNormalizationVectors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_updateNormalizationVect, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_updateNormalizationVectors, __pyx_t_2) < 0) __PYX_ERR(1, 65, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
-
-  /* "net.pyx":68
- *         self.c_net.updateNormalizationVectors()
- * 
- *     def setNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.setNormalizationVectors()
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_29setNormalizationVectors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_setNormalizationVectors, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 68, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_setNormalizationVectors, __pyx_t_2) < 0) __PYX_ERR(1, 68, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
-
-  /* "net.pyx":71
- *         self.c_net.setNormalizationVectors()
- * 
- *     def getNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.getNormalizationVectors()
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_31getNormalizationVectors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_getNormalizationVectors, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 71, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_getNormalizationVectors, __pyx_t_2) < 0) __PYX_ERR(1, 71, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
-
-  /* "net.pyx":74
- *         self.c_net.getNormalizationVectors()
- * 
- *     def resetNormalizationVectors(self):             # <<<<<<<<<<<<<<
- *         self.c_net.resetNormalizationVectors()
- * 
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_33resetNormalizationVectors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet_resetNormalizationVecto, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 74, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_3net_PyEvonet->tp_dict, __pyx_n_s_resetNormalizationVectors, __pyx_t_2) < 0) __PYX_ERR(1, 74, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_3net_PyEvonet);
+  PyType_Modified(__pyx_ptype_10ErPredprey_PyErProblem);
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_35__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet___reduce_cython, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_23__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem___reduce_cython, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8090,12 +7254,12 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3net_8PyEvonet_37__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyEvonet___setstate_cython, NULL, __pyx_n_s_net, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10ErPredprey_11PyErProblem_25__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyErProblem___setstate_cython, NULL, __pyx_n_s_ErPredprey, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "net.pyx":1
+  /* "ErPredprey.pyx":1
  * """             # <<<<<<<<<<<<<<
  * This file belong to https://github.com/snolfi/evorobotpy
  * Author: Stefano Nolfi, stefano.nolfi@istc.cnr.it
@@ -8120,13 +7284,13 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init net", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ErPredprey", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init net");
+    PyErr_SetString(PyExc_ImportError, "init ErPredprey");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -12460,7 +11624,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
                                                __pyx_n_s_name);
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
-        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__30));
+        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__23));
     }
     return name;
 }

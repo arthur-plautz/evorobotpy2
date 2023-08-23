@@ -17,6 +17,45 @@ import numpy as np
 import configparser
 import time
 import sys
+import itertools
+
+def difficulty_function(bins):
+    return bins ** 3
+
+def create_states():
+    # init list of possible starting positions
+    stateRanges_0 = 1.944
+    stateRanges_1 = 1.215
+    stateRanges_2 = 0.10472
+    stateRanges_3 = 0.135088
+    stateRanges_4 = 0.10472
+    stateRanges_5 = 0.135088
+    states_0 = np.linspace(-stateRanges_0, stateRanges_0, 5)
+    states_1 = np.linspace(-stateRanges_1, stateRanges_1, 5)
+    states_2 = np.linspace(-stateRanges_2, stateRanges_2, 5)
+    states_3 = np.linspace(-stateRanges_3, stateRanges_3, 5)
+    states_4 = np.linspace(-stateRanges_4, stateRanges_4, 5)
+    states_5 = np.linspace(-stateRanges_5, stateRanges_5, 5)
+    states = [states_0, states_1, states_2, states_3, states_4, states_5]
+
+    return  states
+
+def create_test_states():
+    # init list of possible starting positions
+    stateRanges_0 = 1.944
+    stateRanges_1 = 1.215
+    stateRanges_2 = 0.10472
+    stateRanges_3 = 0.135088
+    stateRanges_4 = 0.10472
+    stateRanges_5 = 0.135088
+    states_0 = np.linspace(-stateRanges_0, stateRanges_0, 3)
+    states_1 = np.linspace(-stateRanges_1, stateRanges_1, 3)
+    states_2 = np.linspace(-stateRanges_2, stateRanges_2, 3)
+    states_3 = np.linspace(-stateRanges_3, stateRanges_3, 3)
+    states_4 = np.linspace(-stateRanges_4, stateRanges_4, 3)
+    states_5 = np.linspace(-stateRanges_5, stateRanges_5, 3)
+    states = [states_0, states_1, states_2, states_3, states_4, states_5]
+    return  states
 
 class Policy(object):
     def __init__(self, env, fileini, seed, test):
@@ -47,7 +86,8 @@ class Policy(object):
         self.wrange = 1.0    # weight range, used in uniform initialization only
         self.low = -1.0      # mimimum activation
         self.high = 1.0      # maximum activation
-        
+        self.curriculum = 0  # use automated curriculum for environment selection
+
         # Read configuration file
         self.readConfig()
         # Display info
@@ -86,12 +126,69 @@ class Policy(object):
             for i in range(self.nmorphparams):
                 self.params[(self.nparams - self.nmorphparams + i)] = 0.0
             self.env.setParams(self.params[-self.nmorphparams:])
-         
+
+        self.categorized_positions = []
+
+        states = create_states()
+        self.states_list = list(itertools.product(*states))
+
+        test_states = create_test_states()
+        self.test_list = list(itertools.product(*test_states))
+
+        self.states_score = [np.array([0]) for _ in range(len(self.states_list))]
+        self.vec_distributions = np.linspace(0,len(self.states_list),11,dtype=np.int32)
+
     def reset(self):
         self.nn.seed(self.seed)             # set the seed of evonet
         self.nn.initWeights()               # call the evonet function that initialize the parameters
         if (self.normalize == 1):           # re-initialize the normalization vector
             self.nn.resetNormalizationVectors()
+
+
+    def update_scores(self,trial_position,reward):
+        if self.states_score[trial_position][0] == 0:
+            self.states_score[trial_position] = np.array([reward])
+        else:
+            self.states_score[trial_position] = np.append(self.states_score[trial_position],reward)
+            if len(self.states_score[trial_position]) > 5:
+                self.states_score[trial_position] = np.delete(self.states_score[trial_position],0)
+
+    def average_scores(self):
+        self.ave = [np.mean(j) for j in self.states_score]
+        self.sort_distributions = np.argsort(self.ave)
+
+    def bins_distributions(self):
+        # count how many environmental conditons were choosed randomly
+        self.count_random = 0
+
+        self.average_scores()
+
+        rescaled_ave = np.interp(self.ave,(np.min(self.ave),np.max(self.ave)),(0,1))
+
+        bins = np.linspace(np.min(rescaled_ave), np.max(rescaled_ave), 11)
+        # Here we define the difficulty function
+        bins = difficulty_function(bins)
+        bins[-1] = 1
+
+        self.categorized_positions = []
+        for j in range(0,10):
+            self.categorized_positions.append(np.where((rescaled_ave>bins[j]) & (rescaled_ave<=bins[j+1]))[0])
+
+    def from_categories_get_positions(self, seed):
+        trials = []
+        count_random = 0
+
+        for j in range(len(self.categorized_positions)):
+            if len(self.categorized_positions[j]) < 10 and len(self.categorized_positions[j]) > 0:
+                tmp = self.categorized_positions[j][np.random.choice(len(self.categorized_positions[j]))]
+            else:
+                count_random += 1
+                np.random.seed(seed)
+                tmp = np.random.choice(len(self.states_list),1,replace=False)[0]
+
+            trials.append(tmp)
+
+        return trials, count_random
 
     # virtual function, implemented in sub-classes
     def rollout(self, render=False, seed=None):
@@ -170,6 +267,8 @@ class Policy(object):
               found = 1
           if (o == "wrange"):
               self.wrange = config.getint("POLICY","wrange")
+          if (o == "curriculum"):
+              self.curriculum = config.getint("POLICY","curriculum")
               found = 1  
           if (found == 0):
               print("\033[1mOption %s in section [POLICY] of %s file is unknown\033[0m" % (o, self.fileini))
@@ -349,8 +448,24 @@ class ErPolicy(Policy):
             self.objs[0] = -1
             self.env.copyDobj(self.objs)
             import renderWorld
+
+        if self.curriculum > 0:
+            trials, count_random = self.from_categories_get_positions(seed)
+            if ntrials == self.ntrials:
+                self.count_random += count_random/len(trials)
+        else:
+            trials = np.random.choice(len(self.states_list), ntrials, replace=False)
+
         for trial in range(ntrials):
-            self.env.reset()                     # reset the environment at the beginning of a new episode
+            if self.normalize:
+                # if normalize=1, occasionally we store data for input normalization
+                if np.random.uniform(low=0.0, high=1.0) < 0.01:
+                    normphase = 1
+                    self.nn.normphase(1)
+                else:
+                    normphase = 0
+            init_state = self.states_list[trials[trial]]
+            self.env.reset(np.float32(init_state))
             self.nn.resetNet()                   # reset the activation of the neurons (necessary for recurrent policies)
             rew = 0.0
             t = 0
@@ -366,8 +481,12 @@ class ErPolicy(Policy):
                     break
             if (self.test > 0):
                 print("Trial %d Fit %.2f Steps %d " % (trial, rew, t))
+            # if we normalize, we might need to stop store data for normalization
+            if self.normalize and normphase > 0:
+                self.nn.normphase(0)
             steps += t
             rews += rew
+            self.update_scores(trials[trial], reward=rew/1000)
         rews /= ntrials                         # Normalize reward by the number of trials
         if (self.test > 0 and ntrials > 1):
             print("Average Fit %.2f Steps %.2f " % (rews, steps/float(ntrials)))

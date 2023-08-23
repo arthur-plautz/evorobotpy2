@@ -107,11 +107,13 @@ class Algo(EvoAlgo):
         self.save()             # save the best agent so far, the best postevaluated agent so far, and progress data across generations
         fname = self.filedir + "/S" + str(self.seed) + ".fit"
         fp = open(fname, "w")   # save summary
-        fp.write('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avgfit %.2f paramsize %.2f \n' %
-             (self.seed, self.steps / float(self.maxsteps) * 100, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter))
+        fp.write('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avgfit %.2f paramsize %.2f rndenv %.2f \n' %
+             (self.seed, self.progress, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter, self.random_amount))
         fp.close()
  
     def evaluate(self):
+        self.policy.bins_distributions()
+
         cseed = self.seed + self.cgen * self.batchSize  # Set the seed for current generation (master and workers have the same seed)
         self.rs = np.random.RandomState(cseed)
         self.samples = self.rs.randn(self.batchSize, self.nparams)
@@ -232,8 +234,8 @@ class Algo(EvoAlgo):
                 self.policy.nn.updateNormalizationVectors()  # update the normalization vectors with the new data collected
                 self.normalizationdatacollected = False
 
-            print('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avg %.2f weightsize %.2f' %
-                      (self.seed, self.steps / float(self.maxsteps) * 100, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter))
+            print('Seed %d (%.1f%%) gen %d msteps %d bestfit %.2f bestgfit %.2f bestsam %.2f avg %.2f weightsize %.2f rndenv %.2f' %
+                      (self.seed, self.progress, self.cgen, self.steps / 1000000, self.bestfit, self.bestgfit, self.bfit, self.avgfit, self.avecenter, self.random_amount))
 
         self.savedata()                           # save data at the end of evolution
 
