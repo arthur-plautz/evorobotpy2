@@ -178,12 +178,12 @@ class Policy(object):
         trials = []
         count_random = 0
 
+        np.random.seed(seed)
         for j in range(len(self.categorized_positions)):
             if len(self.categorized_positions[j]) < 10 and len(self.categorized_positions[j]) > 0:
                 tmp = self.categorized_positions[j][np.random.choice(len(self.categorized_positions[j]))]
             else:
                 count_random += 1
-                np.random.seed(seed)
                 tmp = np.random.choice(len(self.states_list),1,replace=False)[0]
 
             trials.append(tmp)
@@ -443,6 +443,7 @@ class ErPolicy(Policy):
         if seed is not None:
             self.env.seed(seed)                  # set the seed of the environment that impacts on the initialization of the robot/environment
             self.nn.seed(seed)                   # set the seed of evonet that impacts on the noise eventually added to the activation of the neurons
+            np.random.seed(seed)
         if (self.test > 0):                      # if the policy is used to test a trained agent and to visualize the neurons, we need initialize the graphic render  
             self.objs = np.arange(1000, dtype=np.float64) 
             self.objs[0] = -1
