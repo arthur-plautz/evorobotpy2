@@ -290,7 +290,7 @@ class BulletPolicy(Policy):
     def rollout(self, ntrials, render=False, seed=None):   # evaluate the policy for one or more episodes 
         rews = 0.0                      # summed reward
         steps = 0                       # steps performed
-        if (self.test == 2):
+        if (self.test > 0):
             self.objs = np.arange(10, dtype=np.float64) # if the policy is used to test a trained agent and to visualize the neurons, we need initialize the graphic render  
             self.objs[0] = -1
             import renderWorld
@@ -312,13 +312,12 @@ class BulletPolicy(Policy):
                     if (self.test == 1):
                         self.env.render(mode="human")
                         time.sleep(0.05)
-                    if (self.test == 2):
-                        info = 'Trial %d Step %d Fit %.2f %.2f' % (trial, t, r, rew)
-                        renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
+                    info = 'Trial %d Step %d Fit %.2f %.2f' % (trial, t, r, rew)
                 if done:
                     break
             if (self.test > 0):
                 print("Trial %d Fit %.2f Steps %d " % (trial, rew, t))
+                renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
             steps += t
             rews += rew
         rews /= ntrials                # Normalize reward by the number of trials
@@ -335,38 +334,36 @@ class GymPolicy(Policy):
         self.noutputs = env.action_space.shape[0]          # only works for problems with continuous action space
         Policy.__init__(self, env, filename, seed, test)
 
-    def rollout(self, ntrials, render=False, seed=None):   # evaluate the policy for one or more episodes 
+    def rollout(self, ntrials, progress=0, render=False, seed=None):   # evaluate the policy for one or more episodes 
         rews = 0.0                    # summed rewards
         steps = 0                     # step performed
-        if (self.test == 2):          # if the policy is used to test a trained agent and to visualize the neurons, we need initialize the graphic render  
-            import renderWorld
+        if (self.test > 0):          # if the policy is used to test a trained agent and to visualize the neurons, we need initialize the graphic render  
             self.objs = np.arange(10, dtype=np.float64)   
-            self.objs[0] = -1 
+            self.objs[0] = -1
+            import renderWorld
+
         if seed is not None:
-            self.env.seed(seed)          # set the seed of the environment that impacts on the initialization of the robot/environment
             self.nn.seed(seed)           # set the seed of evonet that impacts on the noise eventually added to the activation of the neurons
         for trial in range(ntrials):
-            self.ob = self.env.reset()   # reset the environment at the beginning of a new episode
+            self.ob, _ = self.env.reset(seed=seed)   # reset the environment at the beginning of a new episode
             self.nn.resetNet()           # reset the activation of the neurons (necessary for recurrent policies)
             rew = 0.0
             t = 0
             while t < self.maxsteps:
                 self.nn.copyInput(np.float32(self.ob))        # copy the pointer to the observation vector to evonet and convert from float64 to float32
                 self.nn.updateNet()                           # update the activation of the policy
-                self.ob, r, done, _ = self.env.step(self.ac)  # perform a simulation step
+                self.ob, r, done, _, _ = self.env.step(self.ac)  # perform a simulation step
                 rew += r
                 t += 1
                 if (self.test > 0):
-                    if (self.test == 1):
-                        self.env.render()
-                        time.sleep(0.05)
-                    if (self.test == 2):
-                        info = 'Trial %d Step %d Fit %.2f %.2f' % (trial, t, r, rew)
-                        renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
+                    self.env.render()
+                    time.sleep(0.05)
+                    info = 'Trial %d Step %d Fit %.2f %.2f' % (trial, t, rew, rews)
+                    # renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
                 if done:
                     break
             if (self.test > 0):
-                print("Trial %d Fit %.2f Steps %d " % (trial, rew, t))
+                print(info)
             steps += t
             rews += rew
         rews /= ntrials               # Normalize reward by the number of trials
@@ -437,7 +434,7 @@ class ErPolicy(Policy):
         env.copyAct(self.ac)                     # pass the pointer to the action vector to the Er environment
         env.copyDone(self.done)                  # pass the pointer to the done vector to the Er environment    
     # === Rollouts/training ===
-    def rollout(self, ntrials, render=False, seed=None):
+    def rollout(self, ntrials, progress=0, render=False, seed=None):
         rews = 0.0                               # summed reward
         steps = 0                                # steps performed
         if seed is not None:
@@ -450,12 +447,14 @@ class ErPolicy(Policy):
             self.env.copyDobj(self.objs)
             import renderWorld
 
-        if self.curriculum > 0:
+        conditions_list = self.test_list if self.test > 0 else self.states_list
+
+        if self.curriculum > 0 and progress > 10:
             trials, count_random = self.from_categories_get_positions(seed)
             if ntrials == self.ntrials:
                 self.count_random += count_random/len(trials)
         else:
-            trials = np.random.choice(len(self.states_list), ntrials, replace=False)
+            trials = np.random.choice(len(conditions_list), ntrials, replace=False)
 
         for trial in range(ntrials):
             if self.normalize:
@@ -465,7 +464,7 @@ class ErPolicy(Policy):
                     self.nn.normphase(1)
                 else:
                     normphase = 0
-            init_state = self.states_list[trials[trial]]
+            init_state = conditions_list[trials[trial]]
             self.env.reset(np.float32(init_state))
             self.nn.resetNet()                   # reset the activation of the neurons (necessary for recurrent policies)
             rew = 0.0
@@ -477,7 +476,7 @@ class ErPolicy(Policy):
                 if (self.test > 0):
                     self.env.render()
                     info = 'Trial %d Step %d Fit %.2f %.2f' % (trial, t, rew, rews)
-                    renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
+                    # renderWorld.update(self.objs, info, self.ob, self.ac, self.nact)
                 if self.done:
                     break
             if (self.test > 0):

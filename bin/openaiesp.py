@@ -172,7 +172,7 @@ class Algo(EvoAlgo):
                         candidate = self.center - self.samples[(self.id * self.n_worker_samples) + b,:] * self.noiseStdDev
                     self.policy.set_trainable_flat(candidate)
                     self.policy.nn.normphase(0)   # workers never collect normalization data
-                    eval_rews, eval_length = self.policy.rollout(self.policy.ntrials, seed=(self.seed + (self.cgen * self.batchSize) + (self.id * self.n_worker_samples) + b))
+                    eval_rews, eval_length = self.policy.rollout(self.policy.ntrials, progress=self.progress, seed=(self.seed + (self.cgen * self.batchSize) + (self.id * self.n_worker_samples) + b))
                     fitness_worker[b*2+bb] = eval_rews
                     ceval += eval_length
         ceval = np.asarray([ceval], dtype=np.int32)
