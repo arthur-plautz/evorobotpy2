@@ -454,7 +454,8 @@ class ErPolicy(Policy):
             if ntrials == self.ntrials:
                 self.count_random += count_random/len(trials)
         else:
-            trials = np.random.choice(len(conditions_list), ntrials, replace=False)
+            replace = (len(conditions_list) < ntrials)
+            trials = np.random.choice(len(conditions_list), ntrials, replace=replace)
 
         for trial in range(ntrials):
             if self.normalize:
