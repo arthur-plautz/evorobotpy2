@@ -447,16 +447,6 @@ class ErPolicy(Policy):
             self.env.copyDobj(self.objs)
             import renderWorld
 
-        conditions_list = self.test_list if self.test > 0 else self.states_list
-
-        if self.curriculum > 0 and progress > 10:
-            trials, count_random = self.from_categories_get_positions(seed)
-            if ntrials == self.ntrials:
-                self.count_random += count_random/len(trials)
-        else:
-            replace = (len(conditions_list) < ntrials)
-            trials = np.random.choice(len(conditions_list), ntrials, replace=replace)
-
         for trial in range(ntrials):
             if self.normalize:
                 # if normalize=1, occasionally we store data for input normalization
@@ -465,8 +455,7 @@ class ErPolicy(Policy):
                     self.nn.normphase(1)
                 else:
                     normphase = 0
-            init_state = conditions_list[trials[trial]]
-            self.env.reset(np.float32(init_state))
+            self.env.reset()
             self.nn.resetNet()                   # reset the activation of the neurons (necessary for recurrent policies)
             rew = 0.0
             t = 0
@@ -487,7 +476,7 @@ class ErPolicy(Policy):
                 self.nn.normphase(0)
             steps += t
             rews += rew
-            self.update_scores(trials[trial], reward=rew/1000)
+
         rews /= ntrials                         # Normalize reward by the number of trials
         if (self.test > 0 and ntrials > 1):
             print("Average Fit %.2f Steps %.2f " % (rews, steps/float(ntrials)))
